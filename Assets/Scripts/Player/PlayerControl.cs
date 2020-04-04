@@ -6,7 +6,8 @@ using UnityEngine.EventSystems;
 
 #pragma warning disable 649
 
-public class PlayerControl : MonoBehaviour, IPunObservable
+// Inherit from MonoBehaviorPun to expose photonView
+public class PlayerControl : MonoBehaviourPun //, IPunObservable
 {
     [Header("Player")]
     public float movementVelocity;
@@ -39,30 +40,35 @@ public class PlayerControl : MonoBehaviour, IPunObservable
     public LayerMask groundMask;
 
     bool isGrounded;
+    bool isControllable;
 
-    PhotonView photonView;
+    //PhotonView photonView; // no need if inheriting from MonoBehaviourPun
 
     private void Awake() {
         //Check in photon if isMine if it is, proceed, else leave
-        photonView = GetComponent<PhotonView>();
+        //photonView = GetComponent<PhotonView>(); // no need if inheriting from MonoBehaviourPun
+
+        // we also want to control the character if we are outside a game room
+        // photonView.IsMine is only available when inside a room
+        isControllable = photonView.IsMine || !PhotonNetwork.InRoom;
 
         input = new InputMaster();
         input.Player.Movement.performed += (ctx) => {
-            if(photonView.IsMine)
+            if (isControllable) //if (photonView.IsMine)
             movementDirection = ctx.ReadValue<Vector2>();
         };
         input.Player.MouseAxis.performed += (ctx) => {
-            if (photonView.IsMine)
+            if (isControllable) //if (photonView.IsMine)
                 mouseMovement = ctx.ReadValue<Vector2>();
 
         };
         input.Player.MouseAxis.canceled += (_) => {
-            if (photonView.IsMine)
+            if (isControllable) //if (photonView.IsMine)
                 mouseMovement = Vector2.zero;
         };
 
         input.Player.Jump.performed += (_) => {
-            if (photonView.IsMine)
+            if (isControllable) //if (photonView.IsMine)
                 if (isGrounded) {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
@@ -70,16 +76,16 @@ public class PlayerControl : MonoBehaviour, IPunObservable
 
         input.Player.Fire.performed += (_) => {
             //
-            if (photonView.IsMine)
+            if (isControllable) //if (photonView.IsMine)
                 shootWeapon = true;
         };
 
         input.Player.Fire.canceled += (_) => {
-            if (photonView.IsMine)
+            if (isControllable) //if (photonView.IsMine)
                 shootWeapon = false;
         };
 
-        if (!photonView.IsMine) {
+        if (!isControllable) { //if (!photonView.IsMine) {
             GetComponentInChildren<Camera>().enabled = false;
         }
     }
@@ -108,7 +114,8 @@ public class PlayerControl : MonoBehaviour, IPunObservable
     }
 
     private void FixedUpdate() {
-        if (!photonView.IsMine)
+
+        if (!isControllable) // if (!photonView.IsMine)
             return;
         float dt = Time.fixedDeltaTime;
 
