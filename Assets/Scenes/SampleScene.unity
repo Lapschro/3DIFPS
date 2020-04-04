@@ -419,10 +419,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 491987890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 454c741d1fa66b64584d161406cc1ed8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2913f5c0fe5e48c468320242854efcb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplayerSceneIndex: 1
 --- !u!4 &491987892
 Transform:
   m_ObjectHideFlags: 0
@@ -889,9 +888,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 937283486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9424ed85beeaed74da24d53f04037dca, type: 3}
+  m_Script: {fileID: 11500000, guid: 78bdb60c7e34160409b8f1c790c742b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneIndex: 1
+  lobbySceneIndex: 0
 --- !u!4 &937283488
 Transform:
   m_ObjectHideFlags: 0
@@ -1171,11 +1172,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2073630061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9b41ffd9236db45a5952ac853efc93, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dfda05b0a1bda44a96b9a38f10ef0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButton: {fileID: 62340736}
-  cancelButton: {fileID: 831728752}
   roomSize: 4
 --- !u!4 &2073630063
 Transform:

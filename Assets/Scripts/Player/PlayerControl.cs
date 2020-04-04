@@ -159,15 +159,13 @@ public class PlayerControl : MonoBehaviourPun //, IPunObservable
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         if (stream.IsWriting) {
             stream.SendNext(this.shootWeapon);
-            stream.SendNext(this.movementDirection);
-            stream.SendNext(this.mouseMovement);
-            stream.SendNext(this.mouseSensibility);
+            stream.SendNext(this.isGrounded);
+            stream.SendNext(this.moving);
         }
         else {
             shootWeapon = (bool)stream.ReceiveNext();
-            movementDirection = (Vector2)stream.ReceiveNext();
-            mouseMovement = (Vector2)stream.ReceiveNext();
-            mouseSensibility = (float)stream.ReceiveNext();
+            isGrounded = (bool)stream.ReceiveNext();
+            moving = (bool)stream.ReceiveNext();
         }
     }
 
