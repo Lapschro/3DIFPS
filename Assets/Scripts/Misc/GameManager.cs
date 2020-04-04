@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    public int lobbySceneIndex;
 
     private void Start() {
         PhotonNetwork.Instantiate(Path.Combine("Prefabs","Player","Player"), Vector3.zero, Quaternion.identity);

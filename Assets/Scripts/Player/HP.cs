@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using Photon.Pun;
 
@@ -27,15 +28,19 @@ public class HP : MonoBehaviourPun {
     {
         if (IsDead()) {
             Destroy(gameObject);
+            if (photonView.IsMine) {
+                PhotonNetwork.LeaveRoom();
+                SceneManager.LoadScene(FindObjectOfType<SetupManager>().lobbyScene);
+            }
         }
     }
 
-    /*public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         if (stream.IsWriting) {
             stream.SendNext(this.hp);
         }
         else {
             hp = (int)stream.ReceiveNext();
         }
-    }*/
+    }
 }
