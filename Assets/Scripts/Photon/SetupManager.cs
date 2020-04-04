@@ -8,6 +8,7 @@ public class SetupManager : MonoBehaviour
 {
 
     public GameObject playerPrefab;
+    public GameObject HUDPrefab;
 
     public List<GameObject> playerObjects;
 
@@ -15,8 +16,10 @@ public class SetupManager : MonoBehaviour
     void Start()
     {
         //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonPlayer"), Vector3.zero, Quaternion.identity);
+
         Debug.Log("instantiate player");
-        //PhotonNetwork.Instantiate("CylinderPlayer", new Vector3(Random.Range(-40.0f,40.0f), 0, Random.Range(-40.0f, 40.0f)), Quaternion.identity);
-        PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(Random.Range(-40.0f, 40.0f), 5.0f, Random.Range(-40.0f, 40.0f)), Quaternion.identity);
+        GameObject playerInstance = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(Random.Range(-40.0f, 40.0f), 5.0f, Random.Range(-40.0f, 40.0f)), Quaternion.identity);
+        GameObject hudInstance = PhotonNetwork.Instantiate(HUDPrefab.name, new Vector3(Random.Range(-40.0f, 40.0f), 5.0f, Random.Range(-40.0f, 40.0f)), Quaternion.identity);
+        hudInstance.GetComponent<HUDManager>().player = playerInstance;
     }
 }
