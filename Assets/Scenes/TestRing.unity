@@ -961,8 +961,8 @@ GameObject:
   - component: {fileID: 1385539870}
   - component: {fileID: 1385539869}
   - component: {fileID: 1385539868}
-  - component: {fileID: 1385539867}
   - component: {fileID: 1385539871}
+  - component: {fileID: 1385539867}
   m_Layer: 0
   m_Name: DeathRing
   m_TagString: Untagged
@@ -970,8 +970,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &1385539867
-SphereCollider:
+--- !u!64 &1385539867
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -980,9 +980,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1385539868
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1029,7 +1030,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385539866}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1385539870
 Transform:
   m_ObjectHideFlags: 0
@@ -1039,7 +1040,7 @@ Transform:
   m_GameObject: {fileID: 1385539866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 200, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -1056,7 +1057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd552ec3552246546b0c32a670eb7708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthRate: 1
+  growthRate: 0.01
   minSize: 5
   maxSize: 100
   drainRate: 40
