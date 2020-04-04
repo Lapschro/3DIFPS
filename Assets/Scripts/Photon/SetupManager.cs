@@ -24,4 +24,10 @@ public class SetupManager : MonoBehaviour
         GameObject hudInstance = PhotonNetwork.Instantiate(HUDPrefab.name, new Vector3(Random.Range(-40.0f, 40.0f), 5.0f, Random.Range(-40.0f, 40.0f)), Quaternion.identity);
         hudInstance.GetComponent<HUDManager>().player = playerInstance;
     }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(lobbyScene);
+    }
 }
