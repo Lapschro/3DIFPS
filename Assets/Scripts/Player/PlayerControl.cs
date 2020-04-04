@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 #pragma warning disable 649
 
 // Inherit from MonoBehaviorPun to expose photonView
-public class PlayerControl : MonoBehaviourPun //, IPunObservable
+public class PlayerControl : MonoBehaviourPun, IPunObservable
 {
     [Header("Player")]
     public float movementVelocity;
@@ -84,10 +84,6 @@ public class PlayerControl : MonoBehaviourPun //, IPunObservable
             if (isControllable) //if (photonView.IsMine)
                 shootWeapon = false;
         };
-
-        if (!isControllable) { //if (!photonView.IsMine) {
-            GetComponentInChildren<Camera>().enabled = false;
-        }
     }
 
     public  void OnEnable() {
@@ -103,20 +99,25 @@ public class PlayerControl : MonoBehaviourPun //, IPunObservable
     {
         Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
+        if (!isControllable) { //if (!photonView.IsMine) {
+            GetComponentInChildren<Camera>().enabled = false;
+            GetComponent<AudioListener>().enabled = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (shootWeapon) {
-            playerWeapon.Shoot(cameraTransform.position, cameraTransform.forward);
-        }
+        
     }
 
     private void FixedUpdate() {
-
-        if (!isControllable) // if (!photonView.IsMine)
-            return;
+        if (shootWeapon) {
+            playerWeapon.Shoot(cameraTransform.position, cameraTransform.forward);
+            Debug.Log("Other Pew");
+        }
+        if (!isControllable)
+            return;// if (!photonView.IsMine)
         float dt = Time.fixedDeltaTime;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -127,21 +128,22 @@ public class PlayerControl : MonoBehaviourPun //, IPunObservable
         if(mouseMovement.magnitude > 0.1f) {
             transform.Rotate(Vector3.up * mouseMovement.x * mouseSensibility * dt);
 
-            cameraRotation = Mathf.Clamp(cameraRotation - mouseMovement.y * mouseSensibility * dt, -90f, 90f );
+            
+                cameraRotation = Mathf.Clamp(cameraRotation - mouseMovement.y * mouseSensibility * dt, -90f, 90f);
 
-            cameraTransform.localRotation = Quaternion.Euler(cameraRotation,0f,0f);
+                cameraTransform.localRotation = Quaternion.Euler(cameraRotation, 0f, 0f);
         }
 
+            Vector3 move = transform.right * movementDirection.x + transform.forward * movementDirection.y;
 
-        Vector3 move = transform.right * movementDirection.x + transform.forward * movementDirection.y ;
-        
-        controller.Move(move * movementVelocity * dt);
+            controller.Move(move * movementVelocity * dt);
 
         moving = false;
 
         if(move.magnitude != 0) {
             moving = true;
         }
+        
 
         velocity.y += gravity * dt;
 

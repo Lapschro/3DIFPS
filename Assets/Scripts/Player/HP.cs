@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HP : MonoBehaviour
-{
+using Photon.Pun;
+
+public class HP : MonoBehaviourPun {
     public int hp;
 
+    [PunRPC]
     public void Damage(int damage) {
         hp -= damage;
     }
@@ -27,4 +29,13 @@ public class HP : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    /*public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+        if (stream.IsWriting) {
+            stream.SendNext(this.hp);
+        }
+        else {
+            hp = (int)stream.ReceiveNext();
+        }
+    }*/
 }
