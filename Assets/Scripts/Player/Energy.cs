@@ -2,11 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Energy : MonoBehaviour
+using Photon.Pun;
+
+public class Energy : MonoBehaviourPun, IPunObservable
 {
     public float energy = 100;
     public Renderer objectRenderer;
     public PlayerControl player;
+
+    public float minimunEnergy;
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+        if (stream.IsWriting) {
+            stream.SendNext(energy);
+        }else if (stream.IsReading) {
+            energy = (float)stream.ReceiveNext();
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +29,7 @@ public class Energy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(energy > 10) {
+        if(energy > minimunEnergy) {
             objectRenderer.enabled = false;
         }
         else {
@@ -32,4 +44,6 @@ public class Energy : MonoBehaviour
         }
         energy = Mathf.Clamp(energy, 0, 100);
     }
+
+
 }
