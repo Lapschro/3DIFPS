@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using UnityEngine.EventSystems;
 
-public class PlayerControl : MonoBehaviour
+#pragma warning disable 649
+
+public class PlayerControl : MonoBehaviour, IPunObservable
 {
     [Header("Player")]
     public float movementVelocity;
@@ -24,6 +28,7 @@ public class PlayerControl : MonoBehaviour
 
     [Header("External Objects")]
     public Transform cameraTransform;
+    public Transform weaponTransform;
     public CharacterController controller;
     public Transform groundCheck;
     public Weapon playerWeapon;
@@ -35,42 +40,55 @@ public class PlayerControl : MonoBehaviour
 
     bool isGrounded;
 
+    PhotonView photonView;
+
     private void Awake() {
         //Check in photon if isMine if it is, proceed, else leave
+        photonView = GetComponent<PhotonView>();
 
-        input = new InputMaster();
-        input.Player.Movement.performed += (ctx) => {
-            movementDirection = ctx.ReadValue<Vector2>();
-        };
-        input.Player.MouseAxis.performed += (ctx) => {
-            mouseMovement = ctx.ReadValue<Vector2>();
+            input = new InputMaster();
+            input.Player.Movement.performed += (ctx) => {
+                if(photonView.IsMine)
+                movementDirection = ctx.ReadValue<Vector2>();
+            };
+            input.Player.MouseAxis.performed += (ctx) => {
+                if (photonView.IsMine)
+                    mouseMovement = ctx.ReadValue<Vector2>();
 
-        };
-        input.Player.MouseAxis.canceled += (_) => {
-            mouseMovement = Vector2.zero;
-        };
+            };
+            input.Player.MouseAxis.canceled += (_) => {
+                if (photonView.IsMine)
+                    mouseMovement = Vector2.zero;
+            };
 
-        input.Player.Jump.performed += (_) => {
-            if (isGrounded) {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            }
-        };
+            input.Player.Jump.performed += (_) => {
+                if (photonView.IsMine)
+                    if (isGrounded) {
+                    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                }
+            };
 
-        input.Player.Fire.performed += (_) => {
-            //
-            shootWeapon = true;
-        };
+            input.Player.Fire.performed += (_) => {
+                //
+                if (photonView.IsMine)
+                    shootWeapon = true;
+            };
 
-        input.Player.Fire.canceled += (_) => {
-            shootWeapon = false;
-        };
+            input.Player.Fire.canceled += (_) => {
+                if (photonView.IsMine)
+                    shootWeapon = false;
+            };
+
+        if (!photonView.IsMine) {
+            GetComponentInChildren<Camera>().enabled = false;
+        }
     }
 
-    private void OnEnable() {
+    public  void OnEnable() {
         input.Enable();
     }
 
-    private void OnDisable() {
+    public  void OnDisable() {
         input.Disable();
     }
 
@@ -90,6 +108,8 @@ public class PlayerControl : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        if (!photonView.IsMine)
+            return;
         float dt = Time.fixedDeltaTime;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -126,4 +146,22 @@ public class PlayerControl : MonoBehaviour
         Gizmos.color = new Color(1,0,0);
         Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
     }
+
+
+    //IPunObservable implementation
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+        if (stream.IsWriting) {
+            stream.SendNext(this.shootWeapon);
+            stream.SendNext(this.movementDirection);
+            stream.SendNext(this.mouseMovement);
+            stream.SendNext(this.mouseSensibility);
+        }
+        else {
+            shootWeapon = (bool)stream.ReceiveNext();
+            movementDirection = (Vector2)stream.ReceiveNext();
+            mouseMovement = (Vector2)stream.ReceiveNext();
+            mouseSensibility = (float)stream.ReceiveNext();
+        }
+    }
+
 }
