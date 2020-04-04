@@ -9,6 +9,8 @@ public class SetupManager : MonoBehaviour
 
     public GameObject playerPrefab;
 
+    public int lobbyScene;
+
     public List<GameObject> playerObjects;
 
     // Start is called before the first frame update
