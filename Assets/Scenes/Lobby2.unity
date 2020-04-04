@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78bdb60c7e34160409b8f1c790c742b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 2
+  sceneIndex: 1
   lobbySceneIndex: 0
 --- !u!4 &1229432250
 Transform:
