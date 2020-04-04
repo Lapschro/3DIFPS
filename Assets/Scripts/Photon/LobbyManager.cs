@@ -6,11 +6,6 @@ using Photon.Realtime;
 // Must inherit from MonoBehaviourPunCallbacks
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
-    // [SerializeField]
-    // private GameObject buttonJoin;
-    // [SerializeField]
-    // private GameObject buttonStop;
-    
     [SerializeField]
     private byte roomSize;
 
