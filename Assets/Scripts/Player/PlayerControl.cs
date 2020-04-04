@@ -46,38 +46,38 @@ public class PlayerControl : MonoBehaviour, IPunObservable
         //Check in photon if isMine if it is, proceed, else leave
         photonView = GetComponent<PhotonView>();
 
-            input = new InputMaster();
-            input.Player.Movement.performed += (ctx) => {
-                if(photonView.IsMine)
-                movementDirection = ctx.ReadValue<Vector2>();
-            };
-            input.Player.MouseAxis.performed += (ctx) => {
-                if (photonView.IsMine)
-                    mouseMovement = ctx.ReadValue<Vector2>();
+        input = new InputMaster();
+        input.Player.Movement.performed += (ctx) => {
+            if(photonView.IsMine)
+            movementDirection = ctx.ReadValue<Vector2>();
+        };
+        input.Player.MouseAxis.performed += (ctx) => {
+            if (photonView.IsMine)
+                mouseMovement = ctx.ReadValue<Vector2>();
 
-            };
-            input.Player.MouseAxis.canceled += (_) => {
-                if (photonView.IsMine)
-                    mouseMovement = Vector2.zero;
-            };
+        };
+        input.Player.MouseAxis.canceled += (_) => {
+            if (photonView.IsMine)
+                mouseMovement = Vector2.zero;
+        };
 
-            input.Player.Jump.performed += (_) => {
-                if (photonView.IsMine)
-                    if (isGrounded) {
-                    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-                }
-            };
+        input.Player.Jump.performed += (_) => {
+            if (photonView.IsMine)
+                if (isGrounded) {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
+        };
 
-            input.Player.Fire.performed += (_) => {
-                //
-                if (photonView.IsMine)
-                    shootWeapon = true;
-            };
+        input.Player.Fire.performed += (_) => {
+            //
+            if (photonView.IsMine)
+                shootWeapon = true;
+        };
 
-            input.Player.Fire.canceled += (_) => {
-                if (photonView.IsMine)
-                    shootWeapon = false;
-            };
+        input.Player.Fire.canceled += (_) => {
+            if (photonView.IsMine)
+                shootWeapon = false;
+        };
 
         if (!photonView.IsMine) {
             GetComponentInChildren<Camera>().enabled = false;
