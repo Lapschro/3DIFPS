@@ -13,6 +13,10 @@ public class HUDManager : MonoBehaviourPun
         {
             gameObject.SetActive(false);
         }
+        else
+        {
+            gameObject.SetActive(true);
+        }
     }
 }
 
