@@ -16,6 +16,8 @@ public class Weapon : MonoBehaviourPun
     public LayerMask layermask;
     LineRenderer line;
 
+    GameObject player;
+
     bool isControllable;
 
     // Start is called before the first frame update
@@ -52,6 +54,9 @@ public class Weapon : MonoBehaviourPun
                 if (isControllable) {
                     Debug.Log(hit.collider.gameObject.name);
                     hit.collider.GetComponent<HP>()?.photonView.RPC("Damage", Photon.Pun.RpcTarget.All, damage);
+                    if (hit.collider.GetComponent<HP>()?.IsDead() ?? false) {
+                        GetComponentInParent<Score>()?.photonView.RPC("AddPoint", RpcTarget.All);
+                    }
                 }
             }
         }

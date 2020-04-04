@@ -14,7 +14,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
     bool shootWeapon;
     public bool moving;
     public int id;
-
+    public int score;
 
     Vector3 velocity;
     float cameraRotation = 0f;

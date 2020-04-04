@@ -12,7 +12,7 @@ public class HP : MonoBehaviourPun {
         hp -= damage;
     }
 
-    bool IsDead() {
+    public bool IsDead() {
         return hp <= 0;
     }
 

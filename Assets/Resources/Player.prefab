@@ -391,7 +391,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -444,6 +444,7 @@ GameObject:
   - component: {fileID: 8842576748604848580}
   - component: {fileID: 8842576748604848585}
   - component: {fileID: 8842576748604848582}
+  - component: {fileID: 3463972840141435932}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -488,6 +489,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 1390704151197506297}
   - {fileID: 8842576748604848585}
+  - {fileID: 3463972840141435932}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -550,6 +552,7 @@ MonoBehaviour:
   mouseSensibility: 3
   moving: 0
   id: 0
+  score: 0
   gravity: -19.62
   cameraTransform: {fileID: 8842576748437728432}
   weaponTransform: {fileID: 4597489662612216187}
@@ -579,6 +582,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3463972840141435932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842576748604848583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dda1abea21903f4aa6e595c3f04b99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8842576748191265377
 PrefabInstance:
   m_ObjectHideFlags: 0
