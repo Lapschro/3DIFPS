@@ -8,6 +8,9 @@ public class SetupManager : MonoBehaviour
 {
 
     public GameObject playerPrefab;
+
+    public List<GameObject> playerObjects;
+
     // Start is called before the first frame update
     void Start()
     {

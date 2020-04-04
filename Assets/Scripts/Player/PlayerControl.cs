@@ -7,8 +7,7 @@ using UnityEngine.EventSystems;
 #pragma warning disable 649
 
 // Inherit from MonoBehaviorPun to expose photonView
-public class PlayerControl : MonoBehaviourPun, IPunObservable
-{
+public class PlayerControl : MonoBehaviourPun, IPunObservable {
     [Header("Player")]
     public float movementVelocity;
     public float mouseSensibility = 3;
@@ -55,7 +54,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
         input = new InputMaster();
         input.Player.Movement.performed += (ctx) => {
             if (isControllable) //if (photonView.IsMine)
-            movementDirection = ctx.ReadValue<Vector2>();
+                movementDirection = ctx.ReadValue<Vector2>();
         };
         input.Player.MouseAxis.performed += (ctx) => {
             if (isControllable) //if (photonView.IsMine)
@@ -70,8 +69,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
         input.Player.Jump.performed += (_) => {
             if (isControllable) //if (photonView.IsMine)
                 if (isGrounded) {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            }
+                    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                }
         };
 
         input.Player.Fire.performed += (_) => {
@@ -86,29 +85,27 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
         };
     }
 
-    public  void OnEnable() {
+    public void OnEnable() {
         input.Enable();
     }
 
-    public  void OnDisable() {
+    public void OnDisable() {
         input.Disable();
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
         if (!isControllable) { //if (!photonView.IsMine) {
             GetComponentInChildren<Camera>().enabled = false;
-            GetComponent<AudioListener>().enabled = false;
+            GetComponentInChildren<AudioListener>().enabled = false;
         }
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
     }
 
     private void FixedUpdate() {
@@ -125,25 +122,25 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
         if (isGrounded && velocity.y < 0)
             velocity.y = -2f;
 
-        if(mouseMovement.magnitude > 0.1f) {
+        if (mouseMovement.magnitude > 0.1f) {
             transform.Rotate(Vector3.up * mouseMovement.x * mouseSensibility * dt);
 
-            
-                cameraRotation = Mathf.Clamp(cameraRotation - mouseMovement.y * mouseSensibility * dt, -90f, 90f);
 
-                cameraTransform.localRotation = Quaternion.Euler(cameraRotation, 0f, 0f);
+            cameraRotation = Mathf.Clamp(cameraRotation - mouseMovement.y * mouseSensibility * dt, -90f, 90f);
+
+            cameraTransform.localRotation = Quaternion.Euler(cameraRotation, 0f, 0f);
         }
 
-            Vector3 move = transform.right * movementDirection.x + transform.forward * movementDirection.y;
+        Vector3 move = transform.right * movementDirection.x + transform.forward * movementDirection.y;
 
-            controller.Move(move * movementVelocity * dt);
+        controller.Move(move * movementVelocity * dt);
 
         moving = false;
 
-        if(move.magnitude != 0) {
+        if (move.magnitude != 0) {
             moving = true;
         }
-        
+
 
         velocity.y += gravity * dt;
 
@@ -152,7 +149,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable
 
 
     private void OnDrawGizmos() {
-        Gizmos.color = new Color(1,0,0);
+        Gizmos.color = new Color(1, 0, 0);
         Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
     }
 
