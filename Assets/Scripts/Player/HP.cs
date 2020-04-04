@@ -6,7 +6,7 @@ public class HP : MonoBehaviour
 {
     public int hp;
 
-    void Damage(int damage) {
+    public void Damage(int damage) {
         hp -= damage;
     }
 
@@ -23,6 +23,8 @@ public class HP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (IsDead()) {
+            Destroy(gameObject);
+        }
     }
 }

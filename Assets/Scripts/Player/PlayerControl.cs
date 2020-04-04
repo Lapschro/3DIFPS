@@ -7,6 +7,9 @@ public class PlayerControl : MonoBehaviour
     [Header("Player")]
     public float movementVelocity;
     public float mouseSensibility = 3;
+    bool shootWeapon;
+    public bool moving;
+    public int id;
 
 
     Vector3 velocity;
@@ -23,6 +26,7 @@ public class PlayerControl : MonoBehaviour
     public Transform cameraTransform;
     public CharacterController controller;
     public Transform groundCheck;
+    public Weapon playerWeapon;
 
     [Header("Physics Configs")]
     public float groundDistance = 0.2f;
@@ -49,6 +53,15 @@ public class PlayerControl : MonoBehaviour
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             }
         };
+
+        input.Player.Fire.performed += (_) => {
+            //
+            shootWeapon = true;
+        };
+
+        input.Player.Fire.canceled += (_) => {
+            shootWeapon = false;
+        };
     }
 
     private void OnEnable() {
@@ -69,7 +82,9 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (shootWeapon) {
+            playerWeapon.Shoot(cameraTransform.position, cameraTransform.forward);
+        }
     }
 
     private void FixedUpdate() {
@@ -92,6 +107,12 @@ public class PlayerControl : MonoBehaviour
         Vector3 move = transform.right * movementDirection.x + transform.forward * movementDirection.y ;
         
         controller.Move(move * movementVelocity * dt);
+
+        moving = false;
+
+        if(move.magnitude != 0) {
+            moving = true;
+        }
 
         velocity.y += gravity * dt;
 
