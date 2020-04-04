@@ -36,6 +36,8 @@ public class PlayerControl : MonoBehaviour
     bool isGrounded;
 
     private void Awake() {
+        //Check in photon if isMine if it is, proceed, else leave
+
         input = new InputMaster();
         input.Player.Movement.performed += (ctx) => {
             movementDirection = ctx.ReadValue<Vector2>();

@@ -1113,7 +1113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351472320}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.318, z: 0.286}
+  m_LocalPosition: {x: 0, y: 0.318, z: 0.158}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 968091498}
@@ -1341,7 +1341,7 @@ MonoBehaviour:
   mouseSensibility: 3
   moving: 0
   id: 0
-  gravity: -9.81
+  gravity: -19.62
   cameraTransform: {fileID: 1351472323}
   controller: {fileID: 1526186421}
   groundCheck: {fileID: 1585139609}
