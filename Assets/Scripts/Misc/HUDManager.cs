@@ -11,7 +11,7 @@ public class HUDManager : MonoBehaviourPun
     {
         if (PhotonNetwork.InRoom && !photonView.IsMine)
         {
-            enabled = true;
+            enabled = false;
         }
     }
 }
