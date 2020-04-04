@@ -490,6 +490,7 @@ MonoBehaviour:
   - {fileID: 1390704151197506297}
   - {fileID: 8842576748604848585}
   - {fileID: 3463972840141435932}
+  - {fileID: 8842576748604848580}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -536,6 +537,7 @@ MonoBehaviour:
   energy: 100
   objectRenderer: {fileID: 8842576748337169737}
   player: {fileID: 8842576748604848585}
+  minimunEnergy: 25
 --- !u!114 &8842576748604848585
 MonoBehaviour:
   m_ObjectHideFlags: 0
