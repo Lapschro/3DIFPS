@@ -19,7 +19,8 @@ public class SafetyZoneSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startTime = Time.realtimeSinceStartup;
+        //startTime = Time.realtimeSinceStartup;
+        ResetTimer(timeToActivate);
     }
 
     // Update is called once per frame
