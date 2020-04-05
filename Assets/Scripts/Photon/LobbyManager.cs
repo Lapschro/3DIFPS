@@ -9,17 +9,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private byte roomSize;
 
-    // // OnConnectedToMaster is called after the connection is established (see NetworkManager)
-    // public override void OnConnectedToMaster()
-    // {
-    //     // All clients must use the same scene as the master client
-    //     PhotonNetwork.AutomaticallySyncScene = true;
-    // }
-
     // Attempts to join an already existing room
     public void JoinRoom()
     {
         Debug.Log("finding game...");
+        PhotonNetwork.NickName = "Player";
         PhotonNetwork.JoinRandomRoom();
     }
 
