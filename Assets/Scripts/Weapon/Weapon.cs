@@ -16,8 +16,6 @@ public class Weapon : MonoBehaviourPun
     public LayerMask layermask;
     LineRenderer line;
 
-    GameObject player;
-
     bool isControllable;
 
     // Start is called before the first frame update
