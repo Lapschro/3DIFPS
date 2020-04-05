@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{454c4d71-52f0-4f98-9ae0-bea47bc598bb}">
+		<property name="assetPath">
+			<value>Sons/Laser gun/Tirolaser5justa.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.5453061224489799</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{27065f30-6194-42b0-882b-4d5686417fe0}</destination>
+		</relationship>
+	</object>
+</objects>
