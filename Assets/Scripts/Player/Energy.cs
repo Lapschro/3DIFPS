@@ -12,6 +12,9 @@ public class Energy : MonoBehaviourPun, IPunObservable
 
     public float minimunEnergy;
 
+    public bool insideSafetyZone = true;
+
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
         if (stream.IsWriting) {
             stream.SendNext(energy);
@@ -36,12 +39,22 @@ public class Energy : MonoBehaviourPun, IPunObservable
             objectRenderer.enabled = true;
         }
 
-        if (player.moving) {
-            energy += 2f * Time.deltaTime;
+        if(!insideSafetyZone)
+        {
+            energy -= 80f * Time.deltaTime;
         }
-        else {
-            energy -= 4f * Time.deltaTime;
+        else
+        {
+            if (player.moving)
+            {
+                energy += 2f * Time.deltaTime;
+            }
+            else
+            {
+                energy -= 4f * Time.deltaTime;
+            }
         }
+        
         energy = Mathf.Clamp(energy, 0, 100);
     }
 

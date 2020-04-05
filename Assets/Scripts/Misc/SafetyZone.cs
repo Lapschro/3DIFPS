@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LifeRing : MonoBehaviour
+public class SafetyZone : MonoBehaviour
 {
     public float growthRate;
     public float minSize;
     public float maxSize;
-    public float drainRate;
 
     //private Vector3 growthVec;
 
@@ -25,14 +24,25 @@ public class LifeRing : MonoBehaviour
 
     }
 
-// TODO: make it so players inside the life ring won't lose energy
-//
-//    private void OnTriggerStay(Collider other)
-//    {
-//        Energy e = other.gameObject.GetComponent<Energy>();
-//        if (e != null)
-//        {
-//            e.energy = Mathf.Clamp(e.energy - 20.0f * Time.deltaTime, 0.0f, 100.0f);
-//        }
-//    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Entered ring");
+        Energy e = other.gameObject.GetComponent<Energy>();
+        if (e != null)
+        {
+            e.insideSafetyZone = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Exit ring");
+        Energy e = other.gameObject.GetComponent<Energy>();
+        if (e != null)
+        {
+            e.insideSafetyZone = false;
+        }
+    }
+
+
 }
