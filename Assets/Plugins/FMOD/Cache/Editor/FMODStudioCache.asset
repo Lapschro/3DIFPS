@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: event:/PlayerWalk
   guid: be1a504d1b2f964fa9b93e6357875dd7
   Banks:
-  - {fileID: 1310302830351784346}
+  - {fileID: 154431814286059183}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -23,6 +23,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 557
+--- !u!114 &-5783532037733346919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/EnemyClose/Distance
+  m_EditorClassIdentifier: 
+  Name: Distance
+  Min: 0
+  Max: 10
+  Default: 0
+  Exists: 1
 --- !u!114 &-875303354777428895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38,7 +55,7 @@ MonoBehaviour:
   Path: event:/LaserWeaponShot
   guid: c3ba95e7abd47849b4de327c5fe76f32
   Banks:
-  - {fileID: 1310302830351784346}
+  - {fileID: 154431814286059183}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -61,7 +78,7 @@ MonoBehaviour:
   Path: event:/ItemIdle
   guid: ed6c6b3cd520864293b07b210145bd27
   Banks:
-  - {fileID: 1310302830351784346}
+  - {fileID: 154431814286059183}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -83,20 +100,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 5727641637382018846}
-  - {fileID: 1310302830351784346}
+  - {fileID: 154431814286059183}
   EditorEvents:
   - {fileID: -6486621742905849079}
   - {fileID: -875303354777428895}
   - {fileID: 6201319705903253701}
   - {fileID: -354584700074407843}
   EditorParameters:
-  - {fileID: 5987128263473960360}
+  - {fileID: 176893781389816150}
   MasterBanks:
-  - {fileID: 1310302830351784346}
+  - {fileID: 154431814286059183}
   StringsBanks:
   - {fileID: 5727641637382018846}
-  stringsBankWriteTime: 637216989986654890
+  stringsBankWriteTime: 637216979398768526
   cacheVersion: 3
+--- !u!114 &154431814286059183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMODProject/quarentenajam/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637216979398768526
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &176893781389816150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Grass
+  m_EditorClassIdentifier: 
+  Name: Grass
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
 --- !u!114 &1310302830351784346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: FMODProject/quarentenajam/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637216989986654890
+  lastModified: 637216979398768526
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -184,12 +236,12 @@ MonoBehaviour:
   Path: event:/EnemyClose
   guid: df68afdc72f8964eb755b57b200c0612
   Banks:
-  - {fileID: 1310302830351784346}
+  - {fileID: 154431814286059183}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters:
-  - {fileID: 4170509863933004880}
+  - {fileID: -5783532037733346919}
   MinDistance: 1
   MaxDistance: 20
   Length: 6034

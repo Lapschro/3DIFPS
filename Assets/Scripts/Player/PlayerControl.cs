@@ -25,6 +25,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
     InputMaster input;
     Vector2 mouseMovement;
     Vector2 movementDirection;
+    Vector3 move;
+
 
     [Header("External Objects")]
     public Transform cameraTransform;
@@ -107,14 +109,32 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
 
     // Update is called once per frame
     void Update() {
-
-    }
-
-    private void FixedUpdate() {
         if (shootWeapon) {
             playerWeapon.Shoot(cameraTransform.position, cameraTransform.forward);
             Debug.Log("Other Pew");
         }
+
+
+        if (!moving) {
+            ParticleSystem.EmissionModule em = particles.emission;
+            em.enabled = false;
+        }
+        else {
+            ParticleSystem.EmissionModule em = particles.emission;
+
+            if (groundCheck) {
+                em.enabled = true;
+            }
+            float angle = (Mathf.Atan2(-move.z, -move.x) * Mathf.Rad2Deg);
+
+            ParticleSystem.ShapeModule shape = particles.shape;
+            shape.rotation = new Vector3(0, angle, 0);
+        }
+    }
+
+    private void FixedUpdate() {
+   
+
         if (!isControllable)
             return;// if (!photonView.IsMine)
         float dt = Time.fixedDeltaTime;
@@ -133,7 +153,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
             cameraTransform.localRotation = Quaternion.Euler(cameraRotation, 0f, 0f);
         }
 
-        Vector3 move = transform.right * movementDirection.x + transform.forward * movementDirection.y;
+        move = transform.right * movementDirection.x + transform.forward * movementDirection.y;
 
         controller.Move(move * movementVelocity * dt);
 
@@ -148,17 +168,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
 
         controller.Move(velocity * dt);
 
-        if (!moving) {
-            particles.Stop();
-        }
-        else {
-            if (!particles.isPlaying && groundCheck) {
-                particles.Play();
-            }
-            float angle = (Mathf.Atan2(-move.z, -move.x) * Mathf.Rad2Deg);
 
-            particles.shape.rotation.Set(0, angle,0);
-        }
         
     }
 
@@ -175,11 +185,16 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
             stream.SendNext(this.shootWeapon);
             stream.SendNext(this.isGrounded);
             stream.SendNext(this.moving);
+            stream.SendNext(this.move.x);
+            stream.SendNext(this.move.z);
         }
         else {
             shootWeapon = (bool)stream.ReceiveNext();
             isGrounded = (bool)stream.ReceiveNext();
             moving = (bool)stream.ReceiveNext();
+
+            move.x = (float)stream.ReceiveNext();
+            move.z = (float)stream.ReceiveNext();
         }
     }
 
