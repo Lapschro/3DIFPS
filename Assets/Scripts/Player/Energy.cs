@@ -8,7 +8,7 @@ public class Energy : MonoBehaviourPun, IPunObservable
 {
     public float energy = 100;
     public Renderer objectRenderer;
-    public GameObject weapon;
+
     public PlayerControl player;
 
     public float minimunEnergy;
@@ -33,6 +33,8 @@ public class Energy : MonoBehaviourPun, IPunObservable
     // Update is called once per frame
     void Update()
     {
+        Weapon weapon = player.playerWeapon;
+
         if(energy > minimunEnergy) {
             objectRenderer.enabled = false;
             if(!isControllable) //Should make weapon disappear only on other clients
