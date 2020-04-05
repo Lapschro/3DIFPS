@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growthRate: -0.01
-  minSize: 10
+  minSize: 20
   maxSize: 256
 --- !u!136 &5808178558281986822
 CapsuleCollider:
