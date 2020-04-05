@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dfda05b0a1bda44a96b9a38f10ef0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomSize: 0
+  roomSize: 10
 --- !u!4 &767892771
 Transform:
   m_ObjectHideFlags: 0
@@ -1702,6 +1702,11 @@ PrefabInstance:
         type: 3}
       propertyPath: viewIdField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842576748604848581, guid: ff9df93058f87bb4a9ab39f575067b71,
+        type: 3}
+      propertyPath: zoneDamageTickTime
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8842576748604848583, guid: ff9df93058f87bb4a9ab39f575067b71,
         type: 3}

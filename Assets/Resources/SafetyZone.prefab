@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd552ec3552246546b0c32a670eb7708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthRate: -1
-  minSize: 20
+  growthRate: -0.25
+  minSize: 10
   maxSize: 256
 --- !u!136 &5808178558281986822
 CapsuleCollider:

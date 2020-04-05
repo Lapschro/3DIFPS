@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
-  zoneDamageTickTime: 3
+  zoneDamageTickTime: 0.5
 --- !u!114 &8842576748604848580
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -740,7 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dfda05b0a1bda44a96b9a38f10ef0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomSize: 0
+  roomSize: 10
 --- !u!4 &767892771
 Transform:
   m_ObjectHideFlags: 0

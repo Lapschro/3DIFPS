@@ -14,6 +14,10 @@ public class SetupManager : MonoBehaviour
 
     public List<GameObject> playerObjects;
 
+
+    public GameObject safetyZonePrefab;
+    //private GameObject safetyZoneActive;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +27,19 @@ public class SetupManager : MonoBehaviour
         GameObject playerInstance = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(Random.Range(-40.0f, 40.0f), 5.0f, Random.Range(-40.0f, 40.0f)), Quaternion.identity);
         GameObject hudInstance = PhotonNetwork.Instantiate(HUDPrefab.name, new Vector3(Random.Range(-40.0f, 40.0f), 5.0f, Random.Range(-40.0f, 40.0f)), Quaternion.identity);
         hudInstance.GetComponent<HUDManager>().player = playerInstance;
+        SpawnSafetyZone();
     }
 
     public void LeaveRoom()
     {
         PhotonNetwork.LeaveRoom();
-        //UnityEngine.SceneManagement.SceneManager.LoadScene(lobbyScene);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(lobbyScene);
+    }
+
+    void SpawnSafetyZone()
+    {
+        float x = Random.Range(-50.0f, 50.0f);
+        float z = Random.Range(-50.0f, 50.0f);
+        /*safetyZoneActive =*/ Instantiate(safetyZonePrefab, new Vector3(x, 0.0f, z), Quaternion.identity);
     }
 }

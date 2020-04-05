@@ -10,7 +10,7 @@ public class HP : MonoBehaviourPun {
 
     bool insideSafetyZone;
 
-    public float zoneDamageTickTime = 3;
+    public float zoneDamageTickTime = 0.5f;
     float timer;
 
     [PunRPC]
@@ -35,6 +35,7 @@ public class HP : MonoBehaviourPun {
             timer -= Time.deltaTime;
             if(timer <= 0) {
                 photonView.RPC("Damage", RpcTarget.All, 1);
+                timer = zoneDamageTickTime;
             }
         }
 
