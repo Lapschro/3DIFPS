@@ -5272,6 +5272,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   particles: {fileID: 2929271398215945678}
+  nameInPath: glock 1
 --- !u!114 &2196587807321686608
 MonoBehaviour:
   m_ObjectHideFlags: 0
