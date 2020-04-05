@@ -115,20 +115,13 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
         }
 
 
-        if (!moving) {
+        if (!moving || !isGrounded) {
             ParticleSystem.EmissionModule em = particles.emission;
             em.enabled = false;
         }
         else {
             ParticleSystem.EmissionModule em = particles.emission;
-
-            if (groundCheck) {
-                em.enabled = true;
-            }
-            float angle = (Mathf.Atan2(-move.z, -move.x) * Mathf.Rad2Deg);
-
-            ParticleSystem.ShapeModule shape = particles.shape;
-            shape.rotation = new Vector3(0, angle, 0);
+            em.enabled = true;
         }
     }
 
