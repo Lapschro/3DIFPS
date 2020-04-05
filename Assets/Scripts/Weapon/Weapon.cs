@@ -12,6 +12,8 @@ public class Weapon : MonoBehaviourPun
 
     float timer;
 
+    float lineTimer = 0.3f;
+
     public GameObject bulletPrefab;
     public LayerMask layermask;
     LineRenderer line;
@@ -30,7 +32,15 @@ public class Weapon : MonoBehaviourPun
     {
         if(timer > 0) {
             timer -= Time.deltaTime;
+            lineTimer -= Time.deltaTime;
+
+            line.widthMultiplier = lineTimer;
         }
+
+        if(lineTimer <= 0) {
+            line.enabled = false;
+        }
+
     }
 
     public void Shoot(Vector3 origin, Vector3 dir) {
@@ -56,6 +66,7 @@ public class Weapon : MonoBehaviourPun
                         GetComponentInParent<Score>()?.photonView.RPC("AddPoint", RpcTarget.All);
                     }
                 }
+                lineTimer = 0.3f;
             }
         }
     }
