@@ -61,9 +61,17 @@ public class PickupWeapon : MonoBehaviourPun
         player.playerWeapon = go.GetComponent<Weapon>();
         player.weaponTransform = go.transform;
 
-        foreach (MeshRenderer renderer in currentWeapon.GetComponentsInChildren<MeshRenderer>()) {
-            renderer.enabled = true;
+        //Debug.Log(currentWeapon.GetPhotonView().ViewID);
+        //Debug.Log(currentWeapon.transform.position);
+        //Debug.Log(FindObjectOfType<WeaponSpawner>());
+        if (photonView.IsMine) {
+            FindObjectOfType<WeaponSpawner>()?.photonView.RPC("SpawnWeaponOnWorld", RpcTarget.All, currentWeapon.GetPhotonView().ViewID, currentWeapon.transform.position);
         }
+
+        Destroy(currentWeapon.gameObject);
+        //foreach (MeshRenderer renderer in currentWeapon.GetComponentsInChildren<MeshRenderer>()) {
+        //    renderer.enabled = true;
+        //}
 
         currentWeapon = go;
     }

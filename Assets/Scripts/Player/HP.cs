@@ -43,6 +43,7 @@ public class HP : MonoBehaviourPun {
             Destroy(gameObject);
             if (photonView.IsMine) {
                 PhotonNetwork.LeaveRoom();
+                PhotonNetwork.LeaveLobby();
                 SceneManager.LoadScene(FindObjectOfType<SetupManager>().lobbyScene);
             }
         }
