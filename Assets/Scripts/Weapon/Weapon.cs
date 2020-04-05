@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviourPun
 
     float lineTimer = 0.3f;
 
-    public GameObject bulletPrefab;
+    public GameObject startOfLine;
     public LayerMask layermask;
     LineRenderer line;
 
@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviourPun
             if (onHit) {
                 line.enabled = true;
                 Vector3[] points = {
-                    transform.position,
+                    startOfLine.transform.position,
                     hit.point
                 };
                 line.SetPositions(points);
