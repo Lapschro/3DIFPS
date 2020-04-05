@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4360774215793856279}
   - component: {fileID: 4360774215793856276}
   - component: {fileID: 5808178558281986822}
+  - component: {fileID: -5102173338719501786}
+  - component: {fileID: -1326741609249464446}
   m_Layer: 10
   m_Name: SafetyZone
   m_TagString: Zona
@@ -93,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd552ec3552246546b0c32a670eb7708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthRate: -0.01
-  minSize: 20
+  growthRate: -0.25
+  minSize: 10
   maxSize: 256
 --- !u!136 &5808178558281986822
 CapsuleCollider:
@@ -110,3 +112,40 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &-5102173338719501786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4360774215793856273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: -1326741609249464446}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &-1326741609249464446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4360774215793856273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 1
