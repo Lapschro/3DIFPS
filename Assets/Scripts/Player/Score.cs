@@ -16,6 +16,7 @@ public class Score : MonoBehaviourPun, IPunObservable
     [PunRPC]
     public void AddPoint() {
         points++;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Score", points } } );
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
@@ -29,7 +30,7 @@ public class Score : MonoBehaviourPun, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-        
+        PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable() { { "Score", points } });
     }
 
     // Update is called once per frame
