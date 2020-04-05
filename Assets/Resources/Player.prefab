@@ -536,8 +536,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energy: 100
   objectRenderer: {fileID: 8842576748337169737}
+  weapon: {fileID: 690961306460547944}
   player: {fileID: 8842576748604848585}
   minimunEnergy: 25
+  insideSafetyZone: 1
+  isControllable: 0
 --- !u!114 &8842576748604848585
 MonoBehaviour:
   m_ObjectHideFlags: 0

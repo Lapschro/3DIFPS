@@ -8,11 +8,14 @@ public class Energy : MonoBehaviourPun, IPunObservable
 {
     public float energy = 100;
     public Renderer objectRenderer;
+    public GameObject weapon;
     public PlayerControl player;
 
     public float minimunEnergy;
 
     public bool insideSafetyZone = true;
+
+    public bool isControllable;
 
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
@@ -23,10 +26,8 @@ public class Energy : MonoBehaviourPun, IPunObservable
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private void Awake() {
+        isControllable = photonView.IsMine || !PhotonNetwork.InRoom;
     }
 
     // Update is called once per frame
@@ -34,9 +35,17 @@ public class Energy : MonoBehaviourPun, IPunObservable
     {
         if(energy > minimunEnergy) {
             objectRenderer.enabled = false;
+            if(!isControllable) //Should make weapon disappear only on other clients
+                foreach (MeshRenderer renderer in weapon.GetComponentsInChildren<MeshRenderer>()) {
+                    renderer.enabled = false;
+                }
         }
         else {
             objectRenderer.enabled = true;
+            if (!isControllable) //Should make weapon disappear only on other clients
+                foreach (MeshRenderer renderer in weapon.GetComponentsInChildren<MeshRenderer>()) {
+                    renderer.enabled = true;
+                }
         }
 
         if(!insideSafetyZone)

@@ -43,7 +43,7 @@ public class Weapon : MonoBehaviourPun
 
             RaycastHit hit;
 
-            bool onHit = Physics.Raycast(origin, dir, out hit, 10f, layermask);
+            bool onHit = Physics.Raycast(origin, dir, out hit, 1000f, layermask);
             if (onHit) {
                 line.enabled = true;
                 Vector3[] points = {

@@ -18,5 +18,9 @@ public class HUDManager : MonoBehaviourPun
             gameObject.SetActive(true);
         }
     }
+
+    private void Start() {
+        
+    }
 }
 
