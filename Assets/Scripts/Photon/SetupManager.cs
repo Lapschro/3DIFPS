@@ -40,6 +40,7 @@ public class SetupManager : MonoBehaviour
     {
         float x = Random.Range(-50.0f, 50.0f);
         float z = Random.Range(-50.0f, 50.0f);
-        /*safetyZoneActive =*/ Instantiate(safetyZonePrefab, new Vector3(x, 0.0f, z), Quaternion.identity);
+        ///*safetyZoneActive =*/ Instantiate(safetyZonePrefab, new Vector3(x, 0.0f, z), Quaternion.identity);
+        PhotonNetwork.InstantiateSceneObject(safetyZonePrefab.name, new Vector3(x, 0.0f, z), Quaternion.identity);
     }
 }
