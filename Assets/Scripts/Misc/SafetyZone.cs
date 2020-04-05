@@ -24,25 +24,4 @@ public class SafetyZone : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Entered ring");
-        Energy e = other.gameObject.GetComponent<Energy>();
-        if (e != null)
-        {
-            e.insideSafetyZone = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("Exit ring");
-        Energy e = other.gameObject.GetComponent<Energy>();
-        if (e != null)
-        {
-            e.insideSafetyZone = false;
-        }
-    }
-
-
 }

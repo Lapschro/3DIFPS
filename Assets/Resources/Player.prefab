@@ -541,6 +541,7 @@ MonoBehaviour:
   minimunEnergy: 25
   insideSafetyZone: 1
   isControllable: 0
+  damgeOutsideZoneTick: 3
 --- !u!114 &8842576748604848585
 MonoBehaviour:
   m_ObjectHideFlags: 0

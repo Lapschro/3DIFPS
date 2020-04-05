@@ -8,6 +8,11 @@ using Photon.Pun;
 public class HP : MonoBehaviourPun {
     public int hp;
 
+    bool insideSafetyZone;
+
+    public float zoneDamageTickTime = 3;
+    float timer;
+
     [PunRPC]
     public void Damage(int damage) {
         hp -= damage;
@@ -26,12 +31,35 @@ public class HP : MonoBehaviourPun {
     // Update is called once per frame
     void Update()
     {
+        if (!insideSafetyZone) {
+            timer -= Time.deltaTime;
+            if(timer <= 0) {
+                photonView.RPC("Damage", RpcTarget.All, 1);
+            }
+        }
+
         if (IsDead()) {
             Destroy(gameObject);
             if (photonView.IsMine) {
                 PhotonNetwork.LeaveRoom();
                 SceneManager.LoadScene(FindObjectOfType<SetupManager>().lobbyScene);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+
+        if (other.tag == "Zona") {
+            Debug.Log("Enter ring");
+            insideSafetyZone = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "Zona") {
+            Debug.Log("Exit ring");
+            insideSafetyZone = false;
+            timer = zoneDamageTickTime;
         }
     }
 

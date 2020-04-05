@@ -60,7 +60,5 @@ public class Weapon : MonoBehaviourPun
                 }
             }
         }
-        else {
-        }
     }
 }

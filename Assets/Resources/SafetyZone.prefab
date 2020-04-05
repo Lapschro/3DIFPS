@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4360774215793856278}
   - component: {fileID: 4360774215793856279}
   - component: {fileID: 4360774215793856276}
-  - component: {fileID: 4360774215793856272}
-  m_Layer: 0
+  - component: {fileID: 5808178558281986822}
+  m_Layer: 10
   m_Name: SafetyZone
-  m_TagString: Untagged
+  m_TagString: Zona
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4360774215793856273}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 25}
-  m_LocalScale: {x: 100, y: 200, z: 100}
+  m_LocalScale: {x: 256, y: 200, z: 256}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,18 +95,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growthRate: -0.01
   minSize: 20
-  maxSize: 100
---- !u!64 &4360774215793856272
-MeshCollider:
+  maxSize: 256
+--- !u!136 &5808178558281986822
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4360774215793856273}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

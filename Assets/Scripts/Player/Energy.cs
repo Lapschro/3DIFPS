@@ -50,7 +50,7 @@ public class Energy : MonoBehaviourPun, IPunObservable
 
         if(!insideSafetyZone)
         {
-            energy -= 80f * Time.deltaTime;
+            energy -= 20f * Time.deltaTime;
         }
         else
         {
@@ -67,5 +67,19 @@ public class Energy : MonoBehaviourPun, IPunObservable
         energy = Mathf.Clamp(energy, 0, 100);
     }
 
+    private void OnTriggerEnter(Collider other) {
+
+        if(other.tag == "Zona") {
+            Debug.Log("Enter ring");
+            insideSafetyZone = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "Zona") {
+            Debug.Log("Exit ring");
+            insideSafetyZone = false;
+        }
+    }
 
 }
