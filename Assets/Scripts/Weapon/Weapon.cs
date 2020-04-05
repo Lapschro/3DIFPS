@@ -20,6 +20,8 @@ public class Weapon : MonoBehaviourPun
 
     bool isControllable;
 
+    public ParticleSystem particles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +50,8 @@ public class Weapon : MonoBehaviourPun
             //bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             timer = cooldown;
             Debug.DrawRay(transform.position, dir);
+
+            particles.Play();
 
             RaycastHit hit;
 
