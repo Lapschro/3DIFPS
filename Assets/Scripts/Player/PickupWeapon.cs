@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Photon.Pun;
+using Photon.Realtime;
 
 public class PickupWeapon : MonoBehaviourPun
 {
@@ -47,7 +48,7 @@ public class PickupWeapon : MonoBehaviourPun
         currentWeapon.transform.parent = null;
         currentWeapon.GetComponent<Rigidbody>().isKinematic = false;
         currentWeapon.GetComponent<Collider>().enabled = true;
-        currentWeapon.GetPhotonView().TransferOwnership(0);
+        currentWeapon.GetPhotonView().TransferOwnership(5);
 
         go.GetComponent<Rigidbody>().isKinematic = true;
         go.GetComponent<Collider>().enabled = false;
@@ -59,6 +60,12 @@ public class PickupWeapon : MonoBehaviourPun
         PlayerControl player = GetComponentInParent<PlayerControl>();
         player.playerWeapon = go.GetComponent<Weapon>();
         player.weaponTransform = go.transform;
+
+        foreach (MeshRenderer renderer in currentWeapon.GetComponentsInChildren<MeshRenderer>()) {
+            renderer.enabled = true;
+        }
+
         currentWeapon = go;
     }
+
 }
