@@ -522,6 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  zoneDamageTickTime: 3
 --- !u!114 &8842576748604848580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -541,7 +542,6 @@ MonoBehaviour:
   minimunEnergy: 25
   insideSafetyZone: 1
   isControllable: 0
-  damgeOutsideZoneTick: 3
 --- !u!114 &8842576748604848585
 MonoBehaviour:
   m_ObjectHideFlags: 0
