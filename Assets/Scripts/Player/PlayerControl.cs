@@ -38,6 +38,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
     public float jumpHeight = 1;
     public LayerMask groundMask;
 
+    public ParticleSystem particles;
+
     bool isGrounded;
     bool isControllable;
 
@@ -145,6 +147,19 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
         velocity.y += gravity * dt;
 
         controller.Move(velocity * dt);
+
+        if (!moving) {
+            particles.Stop();
+        }
+        else {
+            if (!particles.isPlaying && groundCheck) {
+                particles.Play();
+            }
+            float angle = (Mathf.Atan2(-move.z, -move.x) * Mathf.Rad2Deg);
+
+            particles.shape.rotation.Set(0, angle,0);
+        }
+        
     }
 
 
