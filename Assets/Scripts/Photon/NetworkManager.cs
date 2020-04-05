@@ -11,8 +11,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     void Start()
     {
         // On start, try to connect to Photon's master server
-        Debug.Log("Connecting to Photon's master server...");
-        PhotonNetwork.ConnectUsingSettings();
+        if(!PhotonNetwork.IsConnected)
+        {
+            Debug.Log("Connecting to Photon's master server...");
+            PhotonNetwork.ConnectUsingSettings();
+        }
     }
 
     // OnConnectedToMaster is called after the connection is established

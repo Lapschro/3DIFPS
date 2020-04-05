@@ -26,7 +26,7 @@ public class HUDPlayerName : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //inputField.text = PhotonNetwork.NickName;
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class HUDPlayerName : MonoBehaviour
             }
         }
         
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             ConfirmName();
         }
@@ -81,6 +81,7 @@ public class HUDPlayerName : MonoBehaviour
 
     private void OnEnable()
     {
+        inputField.text = PhotonNetwork.NickName;
         Cursor.lockState = CursorLockMode.None;
     }
 
