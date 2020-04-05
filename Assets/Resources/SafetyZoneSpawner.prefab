@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownText: {fileID: 6925259029942405971}
-  timeToActivate: 20
-  timeToDeactivate: 30
+  timeToActivate: 10
+  timeToDeactivate: 20
   safetyZonePrefab: {fileID: 4360774215793856273, guid: 1007ec5d200ebaa4281dcc3a079ff37b,
     type: 3}
 --- !u!1 &6925259029862990771
