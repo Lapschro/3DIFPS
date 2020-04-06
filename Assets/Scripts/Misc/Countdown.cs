@@ -23,7 +23,7 @@ public class Countdown : MonoBehaviour, IPunObservable
     {
         //remainingTime = Mathf.Clamp(countdownTime - (Time.realtimeSinceStartup - startTime), 0.0f, countdownTime);
         Count();
-        //countdownText.text = ((int) remainingTime).ToString("D2");
+        countdownText.text = ((int) remainingTime).ToString("D2");
 
         if (remainingTime <= 0.0f)
         {
