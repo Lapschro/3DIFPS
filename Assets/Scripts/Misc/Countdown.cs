@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Countdown : MonoBehaviour
 {
     public UnityEngine.UI.Text countdownText;
     public float countdownTime;
+    public int nextScene;
 
     float startTime;
     float remainingTime;
@@ -25,6 +27,9 @@ public class Countdown : MonoBehaviour
         if (remainingTime <= 0.0f)
         {
             // Let the revels begin
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.LoadLevel(nextScene);
+            gameObject.SetActive(false);
         }
     }
 }

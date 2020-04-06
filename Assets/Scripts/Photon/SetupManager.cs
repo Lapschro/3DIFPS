@@ -12,8 +12,13 @@ public class SetupManager : MonoBehaviour
 
     public int lobbyScene;
 
+    public bool isWaitingRoom = false;
+    GameObject countdownObject;
+    public int minPlayers;
+
     public List<GameObject> playerObjects;
     public GameObject safetyZonePrefab;
+    public GameObject countdownPrefab;
     //private GameObject safetyZoneActive;
 
     // Start is called before the first frame update
@@ -26,9 +31,23 @@ public class SetupManager : MonoBehaviour
         GameObject hudInstance = PhotonNetwork.Instantiate(HUDPrefab.name, Vector3.zero, Quaternion.identity);
         hudInstance.GetComponent<HUDManager>().player = playerInstance;
 
-        //playerInstance.GetPhotonView().Owner.TagObject = playerInstance; //.GetComponent<PhotonView>().Owner.TagObject = playerInstance;
-
         SpawnSafetyZone();
+    }
+
+    private void Update()
+    {
+        //Debug.Log(
+        //    "MC=" + PhotonNetwork.IsMasterClient
+        //    + " isWaitingRoom=" + isWaitingRoom
+        //    + " null=" + (countdownObject is null)
+        //    + " pcount=" + PhotonNetwork.CurrentRoom.PlayerCount
+        //    + " min=" + minPlayers
+        //);
+
+        if (PhotonNetwork.IsMasterClient && isWaitingRoom && (countdownObject is null) && (PhotonNetwork.CurrentRoom.PlayerCount >= minPlayers))
+        {
+            InitializeCountdown();
+        }        
     }
 
     public void LeaveRoom()
@@ -42,5 +61,11 @@ public class SetupManager : MonoBehaviour
         float x = Random.Range(-50.0f, 50.0f);
         float z = Random.Range(-50.0f, 50.0f);
         PhotonNetwork.InstantiateSceneObject(safetyZonePrefab.name, new Vector3(x, 0.0f, z), Quaternion.identity);
+    }
+
+    void InitializeCountdown()
+    {
+        countdownObject = PhotonNetwork.InstantiateSceneObject(countdownPrefab.name, Vector3.zero, Quaternion.identity);
+        //countdownObject = PhotonNetwork.InstantiateSceneObject(countdownPrefab.name, Vector3.zero, Quaternion.identity);
     }
 }

@@ -44,7 +44,8 @@ public class HUDPlayerName : MonoBehaviour
             }
             else
             {
-                textConnection.text = "Ready (" + PhotonNetwork.CloudRegion.ToUpper() + ")";
+                string str = PhotonNetwork.CloudRegion is null ? "" : PhotonNetwork.CloudRegion.ToUpper();
+                textConnection.text = "Ready (" + str + ")";
             }
         }
         
