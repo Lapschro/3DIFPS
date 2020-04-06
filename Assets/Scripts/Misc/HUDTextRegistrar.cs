@@ -26,18 +26,26 @@ public class HUDTextRegistrar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int value; // = 100_000_000;
         switch(valueField)
         {
             case ValueField.HP:
-                text.text = ((int) playerHP.hp).ToString();
+                value = (int) playerHP.hp;
+                //text.text = ((int) playerHP.hp).ToString();
                 break;
             case ValueField.Energy:
-                text.text = ((int) playerEnergy.energy).ToString();
+                value = (int)playerEnergy.energy;
+                //text.text = ((int) playerEnergy.energy).ToString();
                 break;
             default:
-                text.text = "???";
+                value = 100_000_000;
+                //text.text = "???";
                 break;
         }
-        
+
+        if (value >= 10_000_000)
+            text.text = "???";
+        else
+            text.text = value.ToString();
     }
 }
