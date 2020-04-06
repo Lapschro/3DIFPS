@@ -7118,8 +7118,11 @@ MonoBehaviour:
   HUDPrefab: {fileID: 4058918134352682446, guid: 0be5e14e9e3752c44a177b5eb19aba96,
     type: 3}
   lobbyScene: 4
+  isWaitingRoom: 0
+  minPlayers: 0
   playerObjects: []
   safetyZonePrefab: {fileID: 0}
+  countdownPrefab: {fileID: 0}
 --- !u!1001 &2093207012
 PrefabInstance:
   m_ObjectHideFlags: 0
