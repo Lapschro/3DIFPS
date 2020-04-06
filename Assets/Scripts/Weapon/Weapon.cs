@@ -24,11 +24,13 @@ public class Weapon : MonoBehaviourPun
 
     public string nameInPath;
 
+
     // Start is called before the first frame update
     void Start()
     {
         line = GetComponent<LineRenderer>();
         isControllable = photonView.IsMine || !PhotonNetwork.InRoom;
+
     }
 
     // Update is called once per frame
@@ -74,6 +76,7 @@ public class Weapon : MonoBehaviourPun
                 }
                 lineTimer = 0.3f;
             }
+
         }
     }
 }
