@@ -157,7 +157,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
             }
             else {
                 //Forçar som de passo na volta do pulo
-                stepTimer = 0.2f;
+                stepTimer = 0.4f;
             }
         }
 
