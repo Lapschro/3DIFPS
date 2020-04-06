@@ -51,7 +51,7 @@ public class Countdown : MonoBehaviour, IPunObservable
         else
         {
             this.remainingTime = (float) stream.ReceiveNext();
-            this.countdownText.text = ((int)remainingTime).ToString("D2");
+            this.countdownText.text = (string) stream.ReceiveNext(); 
         }
     }
 }
