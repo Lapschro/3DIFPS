@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestFPS2.unity
     guid: 82d458acdd1245440aa2565f2857777e
+  - enabled: 1
+    path: Assets/Scenes/Lobby som.unity
+    guid: 012ef6577ab2d7e4a88b286f6e77daf6
+  - enabled: 1
+    path: Assets/Scenes/TestFPS Som.unity
+    guid: d534b9a3385cd473c815830facdcb3bb
   m_configObjects: {}

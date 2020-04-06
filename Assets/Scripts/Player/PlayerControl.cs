@@ -41,6 +41,12 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
     bool isGrounded;
     bool isControllable;
 
+    //Music
+    private float stepTime = 0.5f;
+    private float stepTimer = 0f;
+    private int eventIndex = -1;
+    protected CustomEventEmitter eventEmitter;
+
     //PhotonView photonView; // no need if inheriting from MonoBehaviourPun
 
     private void Awake() {
@@ -95,17 +101,22 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
 
     // Start is called before the first frame update
     void Start() {
+
+        eventEmitter = CustomEventEmitter.instance;
+
         Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
         if (!isControllable) { //if (!photonView.IsMine) {
             GetComponentInChildren<Camera>().enabled = false;
             GetComponentInChildren<AudioListener>().enabled = false;
         }
+
+        eventIndex = eventEmitter.StartEventThatFollows(FMODEvents.events[(int)FMODEvents.Player.WALK], gameObject, GetComponentInChildren<Rigidbody>());
     }
 
     // Update is called once per frame
     void Update() {
-
+        eventEmitter.Set3DAttributes(eventIndex, gameObject);
     }
 
     private void FixedUpdate() {
@@ -139,6 +150,20 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
 
         if (move.magnitude != 0) {
             moving = true;
+
+
+            if(isGrounded){
+                //Simular atraso dos passos
+                stepTimer += Time.deltaTime;
+                if(stepTimer >= stepTime){
+                    eventEmitter.PlayEventInstance(eventIndex);
+                    stepTimer = 0f;
+                }
+            }
+            else{
+                //Forçar som de passo na volta do pulo
+                stepTimer = 0.2f;
+            }
         }
 
 

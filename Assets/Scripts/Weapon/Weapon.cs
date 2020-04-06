@@ -24,10 +24,13 @@ public class Weapon : MonoBehaviourPun
 
     public string nameInPath;
 
+    protected CustomEventEmitter eventEmitter;
+
     // Start is called before the first frame update
     void Start()
     {
         line = GetComponent<LineRenderer>();
+        eventEmitter = CustomEventEmitter.instance;
         isControllable = photonView.IsMine || !PhotonNetwork.InRoom;
     }
 
@@ -52,6 +55,10 @@ public class Weapon : MonoBehaviourPun
             //bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             timer = cooldown;
             Debug.DrawRay(transform.position, dir);
+
+            // eventEmitter.PlaySFXOneShot(FMODEvents.events[(int)FMODEvents.Guns.LASER_SHOT], transform.position);
+            int eventIndex = eventEmitter.StartEventThatFollows(FMODEvents.events[(int)FMODEvents.Guns.LASER_SHOT], gameObject, gameObject.GetComponent<Rigidbody>());
+            eventEmitter.PlayEventInstance(eventIndex);
 
             particles.Play();
 

@@ -31,13 +31,13 @@ MonoBehaviour:
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
-  - ClickRpc
-  - DestroyRpc
-  - Damage
   - AddPoint
   - ChangeWeapon
+  - ClickRpc
+  - Damage
+  - DestroyRpc
   - GrowZone
   - SpawnWeaponOnWorld
   DisableAutoOpenWizard: 1
-  ShowSettings: 1
+  ShowSettings: 0
   DevRegionSetOnce: 1
