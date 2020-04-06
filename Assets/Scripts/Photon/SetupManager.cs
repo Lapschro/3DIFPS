@@ -26,7 +26,7 @@ public class SetupManager : MonoBehaviour
         GameObject hudInstance = PhotonNetwork.Instantiate(HUDPrefab.name, Vector3.zero, Quaternion.identity);
         hudInstance.GetComponent<HUDManager>().player = playerInstance;
 
-        playerInstance.GetPhotonView().Owner.TagObject = playerInstance; //.GetComponent<PhotonView>().Owner.TagObject = playerInstance;
+        //playerInstance.GetPhotonView().Owner.TagObject = playerInstance; //.GetComponent<PhotonView>().Owner.TagObject = playerInstance;
 
         SpawnSafetyZone();
     }
