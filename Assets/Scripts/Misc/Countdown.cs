@@ -23,7 +23,7 @@ public class Countdown : MonoBehaviour, IPunObservable
     {
         //remainingTime = Mathf.Clamp(countdownTime - (Time.realtimeSinceStartup - startTime), 0.0f, countdownTime);
         Count();
-        //countdownText.text = ((int) remainingTime).ToString("D2");
+        countdownText.text = ((int) remainingTime).ToString("D2");
 
         if (remainingTime <= 0.0f)
         {
@@ -46,12 +46,12 @@ public class Countdown : MonoBehaviour, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(this.remainingTime);
-            stream.SendNext(this.countdownText.text);
+            //stream.SendNext(this.countdownText.text);
         }
         else
         {
             this.remainingTime = (float) stream.ReceiveNext();
-            this.countdownText.text = ((int)remainingTime).ToString("D2");
+            //this.countdownText.text = (string) stream.ReceiveNext(); 
         }
     }
 }
