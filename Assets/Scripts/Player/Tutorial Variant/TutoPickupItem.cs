@@ -64,6 +64,7 @@ public class TutoPickupItem : MonoBehaviour{
         go.transform.parent = this.transform;
         go.transform.rotation = this.transform.rotation;
         go.transform.localPosition = go.GetComponent<Weapon>().offset;
+        
 
         TutoPlayer player = GetComponentInParent<TutoPlayer>();
         player.playerWeapon = go.GetComponent<Weapon>();

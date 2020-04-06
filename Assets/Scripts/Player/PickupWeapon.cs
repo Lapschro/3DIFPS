@@ -33,7 +33,7 @@ public class PickupWeapon : MonoBehaviourPun
     {
         RaycastHit hit;
 
-        if(Physics.Raycast(transform.position, transform.forward, out hit, 2f, layermask)) {
+        if(Physics.Raycast(transform.position, transform.forward, out hit, 3f, layermask)) {
             Debug.Log(hit.collider.gameObject.name);
             if (input.Player.Interact.triggered) {
                 photonView.RPC("ChangeWeapon", RpcTarget.All, hit.collider.gameObject.GetPhotonView().ViewID);
@@ -49,6 +49,8 @@ public class PickupWeapon : MonoBehaviourPun
         currentWeapon.GetComponent<Rigidbody>().isKinematic = false;
         currentWeapon.GetComponent<Collider>().enabled = true;
         currentWeapon.GetPhotonView().TransferOwnership(5);
+        currentWeapon.transform.position = currentWeapon.transform.position + new Vector3(0, 1, 0);
+        currentWeapon.GetComponent<Rigidbody>().AddForce(Vector3.up * 3, ForceMode.Impulse);
 
         go.GetComponent<Rigidbody>().isKinematic = true;
         go.GetComponent<Collider>().enabled = false;

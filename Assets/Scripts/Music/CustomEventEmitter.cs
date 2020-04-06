@@ -10,14 +10,11 @@ public class CustomEventEmitter : MonoBehaviour
     //FMOD instances
     private FMOD.Studio.EventInstance backgroundMusic;
     private List<FMOD.Studio.EventInstance> instancesList = new List<FMOD.Studio.EventInstance>();
-    //private FMOD.Studio.EventInstance[] instancesArray;
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-        // ChangeBackgroundMusic(FMODEvents.events[(int)FMODEvents.Music.SWEET]);
-        //StartEventInstance(FMODEvents.events[(int)FMODEvents.Chars.CHLOE_SLIDING]);
     }
 
     // Update is called once per frame
@@ -25,8 +22,6 @@ public class CustomEventEmitter : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            //ChangeBackgroundMusic(FMODEvents.events[(int)FMODEvents.Music.CHILLROOM]);
-            // SetFMODGlobalParameter(FMODEvents.Parameters.GameState.ToString(), 1);
             StopInstance(0, true);
         }
     }
