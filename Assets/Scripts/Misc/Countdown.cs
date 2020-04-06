@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Countdown : MonoBehaviour
+public class Countdown : MonoBehaviour, IPunObservable
 {
     public UnityEngine.UI.Text countdownText;
     public float countdownTime;
@@ -21,7 +21,8 @@ public class Countdown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        remainingTime = Mathf.Clamp(countdownTime - (Time.realtimeSinceStartup - startTime), 0.0f, countdownTime);
+        //remainingTime = Mathf.Clamp(countdownTime - (Time.realtimeSinceStartup - startTime), 0.0f, countdownTime);
+        Count();
         countdownText.text = ((int) remainingTime).ToString("D2");
 
         if (remainingTime <= 0.0f)
@@ -30,6 +31,24 @@ public class Countdown : MonoBehaviour
             PhotonNetwork.CurrentRoom.IsOpen = false;
             PhotonNetwork.LoadLevel(nextScene);
             gameObject.SetActive(false);
+        }
+    }
+
+    [PunRPC]
+    void Count()
+    {
+        remainingTime = Mathf.Clamp(countdownTime - (Time.realtimeSinceStartup - startTime), 0.0f, countdownTime);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(this.remainingTime);
+        }
+        else
+        {
+            remainingTime = (float) stream.ReceiveNext();
         }
     }
 }

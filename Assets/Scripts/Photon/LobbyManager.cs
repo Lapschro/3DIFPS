@@ -32,7 +32,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         Debug.Log("creating room");
 
         // Room's unique identifier
-        string roomID = "R" + 0; //Random.Range(0, 10);
+        string roomID = "R" + Random.Range(0, 10000);
 
         // Room's options
         // IsVisible = public game
