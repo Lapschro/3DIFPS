@@ -13,7 +13,7 @@ public class CDTextSync : MonoBehaviour, IPunObservable
     
     }
 
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) { }
     //{
     //    if (stream.IsWriting)
     //    {
