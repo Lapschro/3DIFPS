@@ -12,7 +12,7 @@ public class HUDTextRegistrar : MonoBehaviour
 
     private UnityEngine.UI.Text text;
 
-    public enum ValueField { undefined, HP, Energy };
+    public enum ValueField { undefined, HP, Energy, Visibility };
     public ValueField valueField = ValueField.undefined;
 
     // Start is called before the first frame update
@@ -21,6 +21,7 @@ public class HUDTextRegistrar : MonoBehaviour
         text = GetComponent<UnityEngine.UI.Text>();
         playerHP = hudManager.player.GetComponent<HP>();
         playerEnergy = hudManager.player.GetComponent<Energy>();
+        //playerVisible = hudManager.player.GetComponent<Energy>().
     }
 
     // Update is called once per frame

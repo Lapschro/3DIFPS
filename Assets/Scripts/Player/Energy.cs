@@ -15,6 +15,8 @@ public class Energy : MonoBehaviourPun, IPunObservable
 
     public bool insideSafetyZone = true;
 
+    public bool isInvisible { private set;  get; }
+
     public bool isControllable;
 
 
@@ -37,6 +39,7 @@ public class Energy : MonoBehaviourPun, IPunObservable
 
         if(energy > minimunEnergy) {
             objectRenderer.enabled = false;
+            isInvisible = true;
             if(!isControllable) //Should make weapon disappear only on other clients
                 foreach (MeshRenderer renderer in weapon.GetComponentsInChildren<MeshRenderer>()) {
                     renderer.enabled = false;
@@ -44,6 +47,7 @@ public class Energy : MonoBehaviourPun, IPunObservable
         }
         else {
             objectRenderer.enabled = true;
+            isInvisible = false;
             if (!isControllable) //Should make weapon disappear only on other clients
                 foreach (MeshRenderer renderer in weapon.GetComponentsInChildren<MeshRenderer>()) {
                     renderer.enabled = true;
