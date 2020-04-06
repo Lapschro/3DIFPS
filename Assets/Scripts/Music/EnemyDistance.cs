@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDistance : MonoBehaviour
+using Photon.Pun;
+using Photon.Realtime;
+
+public class EnemyDistance : MonoBehaviourPun
 {
 
     //enemy placeholder
-    public GameObject enemy;
 
     private float distance;
     private bool started = false;
@@ -16,15 +18,44 @@ public class EnemyDistance : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        //PhotonMapper list of player 
         //Placeholder stuff
-        enemy = GameObject.Find("Inimigo");
         eventEmitter = CustomEventEmitter.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = Vector3.Distance(transform.position, enemy.transform.position);
+        if (!photonView.IsMine) {
+            return;
+        }
+        List<GameObject> enemy;
+        enemy = new List<GameObject>();
+        foreach (Player p in PhotonNetwork.PlayerListOthers) {
+            enemy.Add((GameObject)p.TagObject);
+        }
+
+        GameObject nearestEnemy = null;
+        float distance = Mathf.Infinity;
+
+        foreach(GameObject go in enemy) {
+            if (go) {
+                float goDist = Vector3.Distance(transform.position, go.transform.position);
+                if(goDist < distance) {
+                    distance = goDist;
+                    nearestEnemy = go;
+                }
+            }
+            else {
+                continue;
+            }
+        }
+
+        if (!nearestEnemy)
+            return;
+
+        distance = Vector3.Distance(transform.position, nearestEnemy.transform.position);
         //Parâmetro vai de 0 a 10, dividir valor por 3
         distance = distance / 3;
 
