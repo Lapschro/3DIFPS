@@ -99,7 +99,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3349,11 +3349,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6cb6fff45403534ea20eb17eb992f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 8842576748604848583, guid: ff9df93058f87bb4a9ab39f575067b71,
+  playerPrefab: {fileID: 8842576748604848583, guid: e25e74627c861c84c88721042c155d92,
     type: 3}
   HUDPrefab: {fileID: 4058918134352682446, guid: 0be5e14e9e3752c44a177b5eb19aba96,
     type: 3}
-  lobbyScene: 3
+  lobbyScene: 6
   isWaitingRoom: 1
   minPlayers: 2
   playerObjects: []
