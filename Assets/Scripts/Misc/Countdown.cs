@@ -29,6 +29,7 @@ public class Countdown : MonoBehaviour, IPunObservable
         {
             // Let the revels begin
             PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
             PhotonNetwork.LoadLevel(nextScene);
             gameObject.SetActive(false);
         }
