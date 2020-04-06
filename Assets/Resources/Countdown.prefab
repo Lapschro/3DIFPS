@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownText: {fileID: 4409349068667374580}
-  countdownTime: 10
+  countdownTime: 15
   nextScene: 1
 --- !u!114 &2945125602996515016
 MonoBehaviour:

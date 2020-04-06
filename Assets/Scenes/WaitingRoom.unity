@@ -1437,6 +1437,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 431b895defe5136479b79442271ce875, type: 3}
+--- !u!1 &592215390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1982916380293604824, guid: 431b895defe5136479b79442271ce875,
+    type: 3}
+  m_PrefabInstance: {fileID: 592215389}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &665613695
 GameObject:
   m_ObjectHideFlags: 0
@@ -3426,12 +3432,12 @@ MonoBehaviour:
     type: 3}
   lobbyScene: 6
   isWaitingRoom: 1
-  minPlayers: 1
+  minPlayers: 2
   playerObjects: []
   safetyZonePrefab: {fileID: 4360774215793856273, guid: 1007ec5d200ebaa4281dcc3a079ff37b,
     type: 3}
   countdownPrefab: {fileID: 4409349067885428126, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
     type: 3}
-  SFXPrefab: {fileID: 0}
+  SFXPrefab: {fileID: 592215390}
   spawns:
   - {fileID: 2047006605}
