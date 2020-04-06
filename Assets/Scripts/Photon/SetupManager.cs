@@ -22,13 +22,15 @@ public class SetupManager : MonoBehaviour
     public GameObject SFXPrefab;
     //private GameObject safetyZoneActive;
 
+    public Transform[] spawns;
+
     // Start is called before the first frame update
     void Start()
     {
         //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonPlayer"), Vector3.zero, Quaternion.identity);
 
         Debug.Log("instantiate player");
-        GameObject playerInstance = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(Random.Range(-40.0f, 40.0f), 5.0f, Random.Range(-40.0f, 40.0f)), Quaternion.identity);
+        GameObject playerInstance = PhotonNetwork.Instantiate(playerPrefab.name, spawns[Random.Range(0, spawns.Length)].position, Quaternion.identity);
         GameObject hudInstance = PhotonNetwork.Instantiate(HUDPrefab.name, Vector3.zero, Quaternion.identity);
 
         hudInstance.GetComponent<HUDManager>().player = playerInstance;

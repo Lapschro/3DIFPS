@@ -795,7 +795,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 7645641940417002012, guid: c7eb07070045a9648be058ae5b795c81, type: 3}
-  spawnLocations: []
+  spawnLocations:
+  - {fileID: 233669774}
 --- !u!4 &233669774
 Transform:
   m_ObjectHideFlags: 0
@@ -3432,3 +3433,5 @@ MonoBehaviour:
   countdownPrefab: {fileID: 4409349067885428126, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
     type: 3}
   SFXPrefab: {fileID: 0}
+  spawns:
+  - {fileID: 2047006605}
