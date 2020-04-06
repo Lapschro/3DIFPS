@@ -26,7 +26,7 @@ public class HUDPlayerName : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //inputField.text = PhotonNetwork.NickName;
+        inputField.ActivateInputField();
     }
 
     // Update is called once per frame
