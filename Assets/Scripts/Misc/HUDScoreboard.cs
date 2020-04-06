@@ -63,8 +63,11 @@ public class HUDScoreboard : MonoBehaviour
         {
             Debug.Log("playername: " + player.NickName);
             textPlayerList.text += player.NickName + "\n";
-            Debug.Log("property: " + player.CustomProperties);
-            textScoreList.text += player.CustomProperties["Score"].ToString() + "\n";
+            //Debug.Log("property: " + player.CustomProperties);
+            //textScoreList.text += player.CustomProperties["Score"].ToString() + "\n";
+            Debug.Log("property: " + ((GameObject) player.TagObject).GetComponent<Score>().Points);
+            textScoreList.text += ((GameObject)player.TagObject).GetComponent<Score>().Points.ToString() + "\n";
+            
         }
     }
 }

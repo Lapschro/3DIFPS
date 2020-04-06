@@ -25,6 +25,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
     InputMaster input;
     Vector2 mouseMovement;
     Vector2 movementDirection;
+    Vector3 move;
+
 
     [Header("External Objects")]
     public Transform cameraTransform;
@@ -37,6 +39,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
     public float groundDistance = 0.2f;
     public float jumpHeight = 1;
     public LayerMask groundMask;
+
+    public ParticleSystem particles;
 
     bool isGrounded;
     bool isControllable;
@@ -116,14 +120,32 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
 
     // Update is called once per frame
     void Update() {
+<<<<<<< HEAD
         eventEmitter.Set3DAttributes(eventIndex, gameObject);
     }
 
     private void FixedUpdate() {
+=======
+>>>>>>> 416da1d20203949d0262cf609714cf88729f4d4a
         if (shootWeapon) {
             playerWeapon.Shoot(cameraTransform.position, cameraTransform.forward);
             Debug.Log("Other Pew");
         }
+
+
+        if (!moving || !isGrounded) {
+            ParticleSystem.EmissionModule em = particles.emission;
+            em.enabled = false;
+        }
+        else {
+            ParticleSystem.EmissionModule em = particles.emission;
+            em.enabled = true;
+        }
+    }
+
+    private void FixedUpdate() {
+   
+
         if (!isControllable)
             return;// if (!photonView.IsMine)
         float dt = Time.fixedDeltaTime;
@@ -142,7 +164,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
             cameraTransform.localRotation = Quaternion.Euler(cameraRotation, 0f, 0f);
         }
 
-        Vector3 move = transform.right * movementDirection.x + transform.forward * movementDirection.y;
+        move = transform.right * movementDirection.x + transform.forward * movementDirection.y;
 
         controller.Move(move * movementVelocity * dt);
 
@@ -170,6 +192,9 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
         velocity.y += gravity * dt;
 
         controller.Move(velocity * dt);
+
+
+        
     }
 
 
@@ -185,11 +210,16 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
             stream.SendNext(this.shootWeapon);
             stream.SendNext(this.isGrounded);
             stream.SendNext(this.moving);
+            stream.SendNext(this.move.x);
+            stream.SendNext(this.move.z);
         }
         else {
             shootWeapon = (bool)stream.ReceiveNext();
             isGrounded = (bool)stream.ReceiveNext();
             moving = (bool)stream.ReceiveNext();
+
+            move.x = (float)stream.ReceiveNext();
+            move.z = (float)stream.ReceiveNext();
         }
     }
 

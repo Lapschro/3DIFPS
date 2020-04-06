@@ -13,7 +13,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void JoinRoom()
     {
         Debug.Log("finding game...");
-        PhotonNetwork.NickName = "Player";
         PhotonNetwork.JoinRandomRoom();
     }
 
@@ -60,5 +59,4 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         //buttonStop.SetActive(false);
         PhotonNetwork.LeaveRoom();
     }
-
 }
