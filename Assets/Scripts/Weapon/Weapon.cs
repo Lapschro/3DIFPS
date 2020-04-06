@@ -60,7 +60,13 @@ public class Weapon : MonoBehaviourPun
             Debug.DrawRay(transform.position, dir);
 
             // eventEmitter.PlaySFXOneShot(FMODEvents.events[(int)FMODEvents.Guns.LASER_SHOT], transform.position);
-            int eventIndex = eventEmitter.StartEventThatFollows(FMODEvents.events[(int)FMODEvents.Guns.LASER_SHOT], gameObject, gameObject.GetComponent<Rigidbody>());
+             int eventIndex;
+            if(gameObject.name.Contains("glock 1")){
+                eventIndex = eventEmitter.StartEventThatFollows(FMODEvents.events[(int)FMODEvents.Guns.GLOCK_SHOT], gameObject, gameObject.GetComponent<Rigidbody>());
+            }else{
+                eventIndex = eventEmitter.StartEventThatFollows(FMODEvents.events[(int)FMODEvents.Guns.LASER_SHOT], gameObject, gameObject.GetComponent<Rigidbody>());
+            }
+            
             eventEmitter.PlayEventInstance(eventIndex);
 
             particles.Play();

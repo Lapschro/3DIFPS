@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: f9f7aeef-8567-4da8-a97e-ca97d9241232
+    AppIdRealtime: 0ef213e2-0d79-45e6-ae3e-2504e43be5b4
     AppIdChat: 
     AppIdVoice: 
     AppVersion: 
@@ -34,12 +34,12 @@ MonoBehaviour:
   - AddPoint
   - ChangeWeapon
   - ClickRpc
+  - Count
   - Damage
   - DestroyRpc
   - GrowZone
   - PlayAudio
   - SpawnWeaponOnWorld
-  - Count
   DisableAutoOpenWizard: 1
-  ShowSettings: 1
-  DevRegionSetOnce: 0
+  ShowSettings: 0
+  DevRegionSetOnce: 1

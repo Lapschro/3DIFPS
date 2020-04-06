@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using FMODUnity;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -58,6 +58,10 @@ public class PickupWeapon : MonoBehaviourPun
         go.transform.parent = this.transform;
         go.transform.localPosition = go.GetComponent<Weapon>().offset;
         go.transform.rotation = this.transform.rotation;// currentWeapon.transform.rotation;
+
+        //Gambitech do som
+        go.SetActive(false);
+        go.SetActive(true);
 
         PlayerControl player = GetComponentInParent<PlayerControl>();
         player.playerWeapon = go.GetComponent<Weapon>();
