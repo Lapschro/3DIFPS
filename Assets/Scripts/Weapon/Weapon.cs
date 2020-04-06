@@ -24,10 +24,7 @@ public class Weapon : MonoBehaviourPun
 
     public string nameInPath;
 
-<<<<<<< HEAD
     protected CustomEventEmitter eventEmitter;
-=======
->>>>>>> 416da1d20203949d0262cf609714cf88729f4d4a
 
     // Start is called before the first frame update
     void Start()

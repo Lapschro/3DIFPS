@@ -120,13 +120,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
 
     // Update is called once per frame
     void Update() {
-<<<<<<< HEAD
         eventEmitter.Set3DAttributes(eventIndex, gameObject);
-    }
-
-    private void FixedUpdate() {
-=======
->>>>>>> 416da1d20203949d0262cf609714cf88729f4d4a
         if (shootWeapon) {
             playerWeapon.Shoot(cameraTransform.position, cameraTransform.forward);
             Debug.Log("Other Pew");
@@ -144,7 +138,6 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
     }
 
     private void FixedUpdate() {
-   
 
         if (!isControllable)
             return;// if (!photonView.IsMine)
@@ -192,9 +185,6 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
         velocity.y += gravity * dt;
 
         controller.Move(velocity * dt);
-
-
-        
     }
 
 
