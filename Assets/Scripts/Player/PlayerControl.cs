@@ -186,8 +186,9 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
         move = transform.right * movementDirection.x + transform.forward * movementDirection.y;
 
         controller.Move(move * movementVelocity * dt);
-
         moving = false;
+        if (move.magnitude != 0) 
+            moving = true;
 
         velocity.y += gravity * dt;
 
