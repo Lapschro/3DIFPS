@@ -440,6 +440,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
+  particles: {fileID: 0}
 --- !u!143 &8842576748604848582
 CharacterController:
   m_ObjectHideFlags: 0

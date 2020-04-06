@@ -46,7 +46,7 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
     bool isControllable;
 
     //Music
-    private float stepTime = 0.5f;
+    private float stepTime = 0.3f;
     private float stepTimer = 0f;
     private int eventIndex = -1;
     protected CustomEventEmitter eventEmitter;
@@ -210,6 +210,18 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
 
             move.x = (float)stream.ReceiveNext();
             move.z = (float)stream.ReceiveNext();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other){
+        if(other.gameObject.tag == "Grass"){
+            eventEmitter.SetFMODGlobalParameter("Grass", 1);
+        }
+    }
+
+    private void OnTriggerExit(Collider other){
+        if(other.gameObject.tag == "Grass"){
+            eventEmitter.SetFMODGlobalParameter("Grass", 0);
         }
     }
 
