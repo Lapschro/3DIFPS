@@ -4925,7 +4925,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.31799996, z: 0.15799999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4597489662612216187}
+  - {fileID: 7173125295698661608}
   m_Father: {fileID: 8842576748604848586}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5245,10 +5245,10 @@ MonoBehaviour:
   score: 0
   gravity: -19.62
   cameraTransform: {fileID: 8842576748437728432}
-  weaponTransform: {fileID: 4597489662612216187}
+  weaponTransform: {fileID: 7173125295698661608}
   controller: {fileID: 8842576748604848582}
   groundCheck: {fileID: 8842576748529121258}
-  playerWeapon: {fileID: 8842576746948353819}
+  playerWeapon: {fileID: 7173125295698662667}
   groundDistance: 0.42
   jumpHeight: 2
   groundMask:
@@ -5434,13 +5434,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7eb07070045a9648be058ae5b795c81, type: 3}
---- !u!4 &4597489662612216187 stripped
+--- !u!4 &7173125295698661608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6647769410909292559, guid: c7eb07070045a9648be058ae5b795c81,
     type: 3}
   m_PrefabInstance: {fileID: 7173125295698661748}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8842576746948353819 stripped
+--- !u!114 &7173125295698662667 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1818094978602143343, guid: c7eb07070045a9648be058ae5b795c81,
     type: 3}
