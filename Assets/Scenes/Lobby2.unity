@@ -532,7 +532,7 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 782653206}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!65 &556283609
 BoxCollider:
@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -705,8 +705,8 @@ RectTransform:
   m_Father: {fileID: 850179741}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.85, y: 0.1}
-  m_AnchorMax: {x: 0.95, y: 0.4}
+  m_AnchorMin: {x: 0.85, y: 0.17}
+  m_AnchorMax: {x: 0.95, y: 0.33}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1162,13 +1162,13 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 601872290}
-  - {fileID: 1852395301}
-  - {fileID: 997710070}
-  - {fileID: 556283608}
-  - {fileID: 1552820734}
-  - {fileID: 1450054356}
   - {fileID: 2053270690}
+  - {fileID: 997710070}
+  - {fileID: 1552820734}
+  - {fileID: 1852395301}
   - {fileID: 809384713}
+  - {fileID: 556283608}
+  - {fileID: 1450054356}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1296,7 +1296,7 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 782653206}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 135}
 --- !u!65 &809384714
 BoxCollider:
@@ -1397,7 +1397,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 512, y: 128}
+  m_SizeDelta: {x: 512, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &850179742
 MonoBehaviour:
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 0c651591472e31d40b85a071314c8e92, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2096,7 +2096,7 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 782653206}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!65 &1450054357
 BoxCollider:
@@ -2189,7 +2189,7 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 782653206}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!65 &1552820735
 BoxCollider:
@@ -2286,7 +2286,7 @@ RectTransform:
   m_AnchorMin: {x: 0.05, y: 0}
   m_AnchorMax: {x: 0.3, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 15, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1645250610
 MonoBehaviour:
@@ -2301,7 +2301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2452,7 +2452,7 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 782653206}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1852395302
 BoxCollider:
@@ -2549,8 +2549,8 @@ RectTransform:
   m_Father: {fileID: 850179741}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0.1}
-  m_AnchorMax: {x: 0.8, y: 0.4}
+  m_AnchorMin: {x: 0.3, y: 0.17}
+  m_AnchorMax: {x: 0.8, y: 0.33}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3029,7 +3029,7 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 782653206}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 135}
 --- !u!65 &2053270691
 BoxCollider:
