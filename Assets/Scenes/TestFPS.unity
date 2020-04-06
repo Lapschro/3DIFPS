@@ -99,7 +99,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -795,6 +795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 7645641940417002012, guid: c7eb07070045a9648be058ae5b795c81, type: 3}
+  - {fileID: 9018955922126237963, guid: 537e60dc8cb2769499f014cf5c973765, type: 3}
 --- !u!4 &233669774
 Transform:
   m_ObjectHideFlags: 0
@@ -3354,6 +3355,9 @@ MonoBehaviour:
   HUDPrefab: {fileID: 4058918134352682446, guid: 0be5e14e9e3752c44a177b5eb19aba96,
     type: 3}
   lobbyScene: 0
+  isWaitingRoom: 0
+  minPlayers: 0
   playerObjects: []
   safetyZonePrefab: {fileID: 4360774215793856273, guid: 1007ec5d200ebaa4281dcc3a079ff37b,
     type: 3}
+  countdownPrefab: {fileID: 0}

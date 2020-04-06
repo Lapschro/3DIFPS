@@ -63,7 +63,7 @@ public class TutoPickupItem : MonoBehaviour{
         go.GetPhotonView().RequestOwnership();
         go.transform.parent = this.transform;
         go.transform.rotation = this.transform.rotation;
-        go.transform.localPosition = new Vector3(0.485f, -0.405f, 0.634f);
+        go.transform.localPosition = go.GetComponent<Weapon>().offset;
 
         TutoPlayer player = GetComponentInParent<TutoPlayer>();
         player.playerWeapon = go.GetComponent<Weapon>();

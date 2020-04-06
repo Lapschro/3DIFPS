@@ -13,7 +13,7 @@ public class WeaponSpawner : MonoBehaviourPun
     void Start()
     {
         if(PhotonNetwork.IsMasterClient)
-            PhotonNetwork.InstantiateSceneObject(Path.Combine("Weapons", weapons[0].name), transform.position, Quaternion.identity);
+            PhotonNetwork.InstantiateSceneObject(Path.Combine("Weapons", weapons[1].name), transform.position, Quaternion.identity);
     }
 
     [PunRPC]

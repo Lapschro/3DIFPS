@@ -5273,6 +5273,7 @@ MonoBehaviour:
     m_Bits: 768
   particles: {fileID: 2929271398215945678}
   nameInPath: glock 1
+  offset: {x: 0.485, y: -0.405, z: 0.634}
 --- !u!114 &2196587807321686608
 MonoBehaviour:
   m_ObjectHideFlags: 0

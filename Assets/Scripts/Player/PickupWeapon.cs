@@ -53,9 +53,9 @@ public class PickupWeapon : MonoBehaviourPun
         go.GetComponent<Rigidbody>().isKinematic = true;
         go.GetComponent<Collider>().enabled = false;
         go.GetPhotonView().RequestOwnership();
-        go.transform.position = currentWeapon.transform.position;
-        go.transform.rotation = currentWeapon.transform.rotation;
         go.transform.parent = this.transform;
+        go.transform.localPosition = go.GetComponent<Weapon>().offset;
+        go.transform.rotation = this.transform.rotation;// currentWeapon.transform.rotation;
 
         PlayerControl player = GetComponentInParent<PlayerControl>();
         player.playerWeapon = go.GetComponent<Weapon>();
