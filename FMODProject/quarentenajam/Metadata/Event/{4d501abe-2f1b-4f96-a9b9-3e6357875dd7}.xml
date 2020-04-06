@@ -120,7 +120,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{c9f163b6-8c19-4d3a-96ef-a3ef17cf9418}">
 		<property name="volume">
-			<value>-5</value>
+			<value>-11.5</value>
 		</property>
 		<property name="name">
 			<value>Normal</value>
@@ -153,7 +153,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{7a644fbe-dfd9-47ac-8fa9-5cab71042bff}">
 		<property name="volume">
-			<value>-8.5</value>
+			<value>-4.5</value>
 		</property>
 		<property name="name">
 			<value>Folhas</value>
