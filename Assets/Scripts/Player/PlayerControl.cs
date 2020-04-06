@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.EventSystems;
+using FMODUnity;
 
 #pragma warning disable 649
 
@@ -112,10 +113,16 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
         controller = GetComponent<CharacterController>();
         if (!isControllable) { //if (!photonView.IsMine) {
             GetComponentInChildren<Camera>().enabled = false;
-            GetComponentInChildren<AudioListener>().enabled = false;
+
+            AudioListener al = GetComponentInChildren<AudioListener>();
+            if(al)
+                al.enabled = false;
+
+            GetComponentInChildren<StudioListener>().enabled = false;
         }
 
         eventIndex = eventEmitter.StartEventThatFollows(FMODEvents.events[(int)FMODEvents.Player.WALK], gameObject, GetComponentInChildren<Rigidbody>());
+        Debug.Log(eventIndex);
     }
 
     // Update is called once per frame
@@ -135,6 +142,25 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
             ParticleSystem.EmissionModule em = particles.emission;
             em.enabled = true;
         }
+
+        if (move.magnitude != 0) {
+            moving = true;
+
+
+            if (isGrounded) {
+                //Simular atraso dos passos
+                stepTimer += Time.deltaTime;
+                if (stepTimer >= stepTime) {
+                    eventEmitter.PlayEventInstance(eventIndex);
+                    stepTimer = 0f;
+                }
+            }
+            else {
+                //Forçar som de passo na volta do pulo
+                stepTimer = 0.2f;
+            }
+        }
+
     }
 
     private void FixedUpdate() {
@@ -162,25 +188,6 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
         controller.Move(move * movementVelocity * dt);
 
         moving = false;
-
-        if (move.magnitude != 0) {
-            moving = true;
-
-
-            if(isGrounded){
-                //Simular atraso dos passos
-                stepTimer += Time.deltaTime;
-                if(stepTimer >= stepTime){
-                    eventEmitter.PlayEventInstance(eventIndex);
-                    stepTimer = 0f;
-                }
-            }
-            else{
-                //Forçar som de passo na volta do pulo
-                stepTimer = 0.2f;
-            }
-        }
-
 
         velocity.y += gravity * dt;
 
