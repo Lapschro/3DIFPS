@@ -24,6 +24,8 @@ public class SetupManager : MonoBehaviour
 
     public Transform[] spawns;
 
+    public GameObject WinCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +53,11 @@ public class SetupManager : MonoBehaviour
         if (PhotonNetwork.IsMasterClient && isWaitingRoom && (countdownObject is null) && (PhotonNetwork.CurrentRoom.PlayerCount >= minPlayers))
         {
             InitializeCountdown();
-        }        
+        }
+        if(PhotonNetwork.PlayerListOthers.Length <= 0) {
+            WinCanvas.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     public void LeaveRoom()

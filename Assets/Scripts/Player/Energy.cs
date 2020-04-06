@@ -35,6 +35,9 @@ public class Energy : MonoBehaviourPun, IPunObservable
     // Update is called once per frame
     void Update()
     {
+        if (Cursor.lockState != CursorLockMode.Locked)
+            return;
+
         Weapon weapon = player.playerWeapon;
 
         if(energy > minimunEnergy) {

@@ -131,6 +131,8 @@ public class TutoPlayer : MonoBehaviour
 
     private void FixedUpdate() {
 
+        if (Cursor.lockState != CursorLockMode.Locked)
+            return;
         float dt = Time.fixedDeltaTime;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);

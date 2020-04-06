@@ -164,7 +164,8 @@ public class PlayerControl : MonoBehaviourPun, IPunObservable {
     }
 
     private void FixedUpdate() {
-
+        if (Cursor.lockState != CursorLockMode.Locked)
+            return;
         if (!isControllable)
             return;// if (!photonView.IsMine)
         float dt = Time.fixedDeltaTime;
