@@ -23,7 +23,8 @@ public class FMODEvents : MonoBehaviour
     public enum General
     {
         ITEM_IDLE = Guns.LASER_RELOAD + 1,
-        ENEMY_CLOSE
+        ENEMY_CLOSE,
+        MARCEL
     }
 
     public enum Music
@@ -45,13 +46,16 @@ public class FMODEvents : MonoBehaviour
         //      PLAYER
         "event:/PlayerWalk",
         //      GUNS
-        "",
+        "event:/GlockShot",
         "",
         "event:/LaserWeaponShot",
         "",
         //      GENERAL
         "event:/ItemIdle",
-        "event:/EnemyClose"
+        "event:/EnemyClose",
+        "event:/Marcel",
+        //      MUSIC
+        "event:/MainMenu",
     };
 
     // Start is called before the first frame update
