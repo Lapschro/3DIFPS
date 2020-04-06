@@ -15869,7 +15869,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Player name
+  m_Text: 'Lapschro
+
+'
 --- !u!222 &8806632590759977731
 CanvasRenderer:
   m_ObjectHideFlags: 0

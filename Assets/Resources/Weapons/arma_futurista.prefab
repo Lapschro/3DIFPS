@@ -4952,7 +4952,6 @@ GameObject:
   - component: {fileID: 6092265061501611333}
   - component: {fileID: 8797373176582846971}
   - component: {fileID: 2227993334349812543}
-  - component: {fileID: -7988812233459782462}
   m_Layer: 11
   m_Name: arma_futurista
   m_TagString: Untagged
@@ -5214,26 +5213,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.28182733, y: 0.7252278, z: 2.2457204}
   m_Center: {x: 0, y: -0.14959583, z: -1.1478338}
---- !u!114 &-7988812233459782462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9018955922126237963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  Event: event:/ItemIdle
-  PlayEvent: 1
-  StopEvent: 12
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
