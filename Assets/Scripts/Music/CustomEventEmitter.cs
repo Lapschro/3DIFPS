@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[DefaultExecutionOrder(100)]
+[DefaultExecutionOrder(-100)]
 public class CustomEventEmitter : MonoBehaviour
 {
     public static CustomEventEmitter instance;
