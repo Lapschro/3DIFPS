@@ -10,6 +10,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        if (System.String.IsNullOrEmpty(PhotonNetwork.NickName))
+        {
+            PhotonNetwork.NickName = "Player";
+        }
         // On start, try to connect to Photon's master server
         if(!PhotonNetwork.IsConnected)
         {

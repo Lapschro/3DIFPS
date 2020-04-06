@@ -64,9 +64,8 @@ public class HUDPlayerName : MonoBehaviour
         else
             PhotonNetwork.NickName = inputField.text;
 
-        if (!playerSpawned)
-            SpawnPlayer();
-
+        //if (!playerSpawned)
+        //    SpawnPlayer();
         nameDefined = true;
         nameUI.SetActive(false);
     }
