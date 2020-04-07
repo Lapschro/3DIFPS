@@ -48,6 +48,7 @@ MonoBehaviour:
   countdownText: {fileID: 4409349068667374580}
   countdownTime: 30
   nextScene: 1
+  minPlayers: 2
 --- !u!114 &2945125602996515016
 MonoBehaviour:
   m_ObjectHideFlags: 0

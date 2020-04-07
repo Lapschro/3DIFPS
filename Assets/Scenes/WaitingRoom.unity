@@ -3432,12 +3432,8 @@ MonoBehaviour:
   HUDPrefab: {fileID: 4058918134352682446, guid: 0be5e14e9e3752c44a177b5eb19aba96,
     type: 3}
   lobbyScene: 6
-  isWaitingRoom: 1
-  minPlayers: 2
   playerObjects: []
   safetyZonePrefab: {fileID: 4360774215793856273, guid: 1007ec5d200ebaa4281dcc3a079ff37b,
-    type: 3}
-  countdownPrefab: {fileID: 4409349067885428126, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
     type: 3}
   SFXPrefab: {fileID: 592215390}
   spawns:
@@ -3465,3 +3461,87 @@ MonoBehaviour:
   viewIdField: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!1001 &2107608727
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2945125602996515016, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: viewIdField
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349067885428120, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.9248486
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349067885428120, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.283508
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349067885428120, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 43.3134
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349067885428120, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349067885428120, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349067885428120, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349067885428120, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349067885428120, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349067885428120, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349067885428120, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349067885428120, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349067885428126, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_Name
+      value: Countdown
+      objectReference: {fileID: 0}
+    - target: {fileID: 4409349068108505964, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183578294205017814, guid: ffb7819cf6e9c6b44b5b15f0cd55e370,
+        type: 3}
+      propertyPath: viewIdField
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ffb7819cf6e9c6b44b5b15f0cd55e370, type: 3}

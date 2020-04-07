@@ -12,13 +12,13 @@ public class SetupManager : MonoBehaviourPun
 
     public int lobbyScene;
 
-    public bool isWaitingRoom = false;
-    GameObject countdownObject;
-    public int minPlayers;
+    //public bool isWaitingRoom = false;
+    //GameObject countdownObject;
+    //public int minPlayers;
 
     public List<GameObject> playerObjects;
     public GameObject safetyZonePrefab;
-    public GameObject countdownPrefab;
+    //public GameObject countdownPrefab;
     public GameObject SFXPrefab;
     //private GameObject safetyZoneActive;
 
@@ -50,11 +50,11 @@ public class SetupManager : MonoBehaviourPun
         //    + " min=" + minPlayers
         //);
 
-        if (PhotonNetwork.IsMasterClient && isWaitingRoom && (countdownObject is null) && (PhotonNetwork.CurrentRoom.PlayerCount >= minPlayers))
+        /*if (PhotonNetwork.IsMasterClient && isWaitingRoom && (countdownObject is null) && (PhotonNetwork.CurrentRoom.PlayerCount >= minPlayers))
         {
             photonView.RPC("InitializeCountdown", RpcTarget.All);
             //InitializeCountdown();
-        }
+        }*/
         if(PhotonNetwork.PlayerListOthers.Length <= 0) {
             WinCanvas.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
@@ -74,10 +74,11 @@ public class SetupManager : MonoBehaviourPun
         PhotonNetwork.InstantiateSceneObject(safetyZonePrefab.name, new Vector3(x, 0.0f, z), Quaternion.identity);
     }
 
+    /*
     [PunRPC]
     void InitializeCountdown()
     {
         countdownObject = PhotonNetwork.InstantiateSceneObject(countdownPrefab.name, Vector3.zero, Quaternion.identity);
         //countdownObject = PhotonNetwork.InstantiateSceneObject(countdownPrefab.name, Vector3.zero, Quaternion.identity);
-    }
+    }*/
 }
