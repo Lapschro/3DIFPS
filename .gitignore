@@ -69,3 +69,4 @@ crashlytics-build.properties
 /Source/** filter=lfs diff=lfs merge=lfs -text
 
 Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
+Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset.meta
