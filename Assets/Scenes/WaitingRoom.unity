@@ -3432,7 +3432,7 @@ MonoBehaviour:
     type: 3}
   lobbyScene: 6
   isWaitingRoom: 1
-  minPlayers: 2
+  minPlayers: 1
   playerObjects: []
   safetyZonePrefab: {fileID: 4360774215793856273, guid: 1007ec5d200ebaa4281dcc3a079ff37b,
     type: 3}
@@ -3441,3 +3441,4 @@ MonoBehaviour:
   SFXPrefab: {fileID: 592215390}
   spawns:
   - {fileID: 2047006605}
+  WinCanvas: {fileID: 0}

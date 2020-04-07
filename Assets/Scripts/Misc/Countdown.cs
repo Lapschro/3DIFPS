@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Countdown : MonoBehaviour, IPunObservable
+public class Countdown : MonoBehaviourPun, IPunObservable
 {
     public UnityEngine.UI.Text countdownText;
     public float countdownTime;
@@ -22,7 +22,8 @@ public class Countdown : MonoBehaviour, IPunObservable
     void Update()
     {
         //remainingTime = Mathf.Clamp(countdownTime - (Time.realtimeSinceStartup - startTime), 0.0f, countdownTime);
-        Count();
+        photonView.RPC("Count", RpcTarget.All);
+        //Count();
         countdownText.text = ((int) remainingTime).ToString("D2");
 
         if (remainingTime <= 0.0f)
