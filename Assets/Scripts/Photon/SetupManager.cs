@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 using Photon.Pun;
 
-public class SetupManager : MonoBehaviour
+public class SetupManager : MonoBehaviourPun
 {
 
     public GameObject playerPrefab;
@@ -52,7 +52,8 @@ public class SetupManager : MonoBehaviour
 
         if (PhotonNetwork.IsMasterClient && isWaitingRoom && (countdownObject is null) && (PhotonNetwork.CurrentRoom.PlayerCount >= minPlayers))
         {
-            InitializeCountdown();
+            photonView.RPC("InitializeCountdown", RpcTarget.All);
+            //InitializeCountdown();
         }
         if(PhotonNetwork.PlayerListOthers.Length <= 0) {
             WinCanvas.SetActive(true);
@@ -73,6 +74,7 @@ public class SetupManager : MonoBehaviour
         PhotonNetwork.InstantiateSceneObject(safetyZonePrefab.name, new Vector3(x, 0.0f, z), Quaternion.identity);
     }
 
+    [PunRPC]
     void InitializeCountdown()
     {
         countdownObject = PhotonNetwork.InstantiateSceneObject(countdownPrefab.name, Vector3.zero, Quaternion.identity);

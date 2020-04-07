@@ -22,8 +22,8 @@ public class Countdown : MonoBehaviourPun, IPunObservable
     void Update()
     {
         //remainingTime = Mathf.Clamp(countdownTime - (Time.realtimeSinceStartup - startTime), 0.0f, countdownTime);
-        photonView.RPC("Count", RpcTarget.All);
-        //Count();
+        //photonView.RPC("Count", RpcTarget.All);
+        Count();
         countdownText.text = ((int) remainingTime).ToString("D2");
 
         if (remainingTime <= 0.0f)
@@ -36,7 +36,7 @@ public class Countdown : MonoBehaviourPun, IPunObservable
         }
     }
 
-    [PunRPC]
+    //[PunRPC]
     void Count()
     {
         remainingTime = Mathf.Clamp(countdownTime - (Time.realtimeSinceStartup - startTime), 0.0f, countdownTime);
@@ -47,13 +47,13 @@ public class Countdown : MonoBehaviourPun, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(this.remainingTime);
-            stream.SendNext(this.startTime);
+            //stream.SendNext(this.startTime);
             //stream.SendNext(this.countdownText.text);
         }
         else
         {
             this.remainingTime = (float) stream.ReceiveNext();
-            this.startTime = (float)stream.ReceiveNext();
+            //this.startTime = (float)stream.ReceiveNext();
             //this.countdownText.text = (string) stream.ReceiveNext(); 
         }
     }
