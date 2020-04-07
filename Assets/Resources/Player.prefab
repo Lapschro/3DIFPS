@@ -5206,7 +5206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee662d7dc6ebd642a7db6a4cc527884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 3
   zoneDamageTickTime: 2
 --- !u!114 &8842576748604848580
 MonoBehaviour:
