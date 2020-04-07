@@ -15,7 +15,7 @@ public class Countdown : MonoBehaviourPun, IPunObservable
     // Start is called before the first frame update
     void Start()
     {
-        startTime = Time.realtimeSinceStartup;
+        startTime = (float) PhotonNetwork.Time;
     }
 
     // Update is called once per frame
@@ -39,7 +39,8 @@ public class Countdown : MonoBehaviourPun, IPunObservable
     //[PunRPC]
     void Count()
     {
-        remainingTime = Mathf.Clamp(countdownTime - (Time.realtimeSinceStartup - startTime), 0.0f, countdownTime);
+        //remainingTime = Mathf.Clamp(countdownTime - (Time.realtimeSinceStartup - startTime), 0.0f, countdownTime);
+        remainingTime = Mathf.Clamp(countdownTime - ((float) PhotonNetwork.Time - startTime), 0.0f, countdownTime);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
