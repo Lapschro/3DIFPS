@@ -48,13 +48,13 @@ public class Countdown : MonoBehaviourPun, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(this.remainingTime);
-            //stream.SendNext(this.startTime);
+            stream.SendNext(this.startTime);
             //stream.SendNext(this.countdownText.text);
         }
         else
         {
             this.remainingTime = (float) stream.ReceiveNext();
-            //this.startTime = (float)stream.ReceiveNext();
+            this.startTime = (float)stream.ReceiveNext();
             //this.countdownText.text = (string) stream.ReceiveNext(); 
         }
     }
